@@ -9,44 +9,48 @@ public class ElementsPage extends BasePage {
         open(pageUrl);
     }
 
-    public void clickTextBox() {
+    public void openTextBoxTab() {
         $((ElementsPageLocators.ElementsMainPage.TEXT_BOX.getLocator())).click();
     }
 
-    public void clickCheckBox() {
+    public void openCheckBoxTab() {
         $((ElementsPageLocators.ElementsMainPage.CHECK_BOX.getLocator())).click();
     }
 
-    public void clickRadioButton() {
+    public void openRadioButtonTab() {
         $((ElementsPageLocators.ElementsMainPage.RADIO_BUTTON.getLocator())).click();
     }
 
-    public void clickWebTables() {
+    public void openWebTablesTab() {
         $((ElementsPageLocators.ElementsMainPage.WEB_TABLES.getLocator())).click();
     }
 
-    public void clickButtons() {
+    public void openButtonsTab() {
         $((ElementsPageLocators.ElementsMainPage.BUTTONS.getLocator())).click();
     }
 
-    public void clickLinks() {
+    public void openLinksTab() {
         $((ElementsPageLocators.ElementsMainPage.LINKS.getLocator())).click();
     }
 
-    public void clickBrokenLinks() {
+    public void openBrokenLinksTab() {
         $((ElementsPageLocators.ElementsMainPage.BROKEN_LINKS.getLocator())).click();
     }
 
-    public void clickUploadDownload() {
+    public void openUploadDownloadTab() {
         $((ElementsPageLocators.ElementsMainPage.UPLOAD_DOWNLOAD.getLocator())).click();
     }
 
-    public void clickDynamicProperties() {
+    public void openDynamicPropertiesTab() {
         $((ElementsPageLocators.ElementsMainPage.DYNAMIC_PROPERTIES.getLocator())).click();
     }
 
     public void setFullName(String fullName) {
         $((ElementsPageLocators.TextBoxPage.FULL_NAME_INPUT.getLocator())).setValue(fullName);
+    }
+
+    public void clickCheckBox(){
+        $(ElementsPageLocators.CheckBoxPage.CHECKBOX.getLocator()).click();
     }
 
 }

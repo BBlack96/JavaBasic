@@ -1,4 +1,3 @@
-// BaseTest.java
 package tests;
 
 import pages.ElementsPage;

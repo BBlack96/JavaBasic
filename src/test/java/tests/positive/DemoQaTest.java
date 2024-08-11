@@ -6,10 +6,12 @@ import tests.BaseTest;
 public class DemoQaTest extends BaseTest {
 
     @Test
-    public void firsTest() {
+    public void firstTest() {
         elementsPage().openPage();
-        elementsPage().clickTextBox();
-        elementsPage().setFullName("John Doe");
+        elementsPage().openCheckBoxTab();
+        elementsPage().clickCheckBox();
+
+
 
     }
 
