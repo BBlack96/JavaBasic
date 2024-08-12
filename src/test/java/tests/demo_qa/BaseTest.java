@@ -1,10 +1,10 @@
-package tests;
+package tests.demo_qa;
 
-import pages.ElementsPage;
-import pages.InteractionsPage;
-import pages.WidgetsPage;
-import pages.BookStorePage;
-import pages.AlertsFramesWindowsPage;
+import demo_qa.pages.ElementsPage;
+import demo_qa.pages.InteractionsPage;
+import demo_qa.pages.WidgetsPage;
+import demo_qa.pages.BookStorePage;
+import demo_qa.pages.AlertsFramesWindowsPage;
 
 public class BaseTest {
     private static ElementsPage elementsPage;

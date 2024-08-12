@@ -1,4 +1,4 @@
-package locators;
+package demo_qa.locators;
 
 import org.openqa.selenium.By;
 

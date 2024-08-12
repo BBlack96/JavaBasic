@@ -1,4 +1,4 @@
-package pages;
+package demo_qa.pages;
 
 public class AlertsFramesWindowsPage extends BasePage {
 

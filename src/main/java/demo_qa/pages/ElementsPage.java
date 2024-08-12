@@ -1,6 +1,6 @@
-package pages;
+package demo_qa.pages;
 
-import locators.ElementsPageLocators;
+import demo_qa.locators.ElementsPageLocators;
 
 public class ElementsPage extends BasePage {
     final String pageUrl = "https://demoqa.com/elements";

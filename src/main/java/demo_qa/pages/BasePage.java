@@ -1,4 +1,4 @@
-package pages;
+package demo_qa.pages;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;

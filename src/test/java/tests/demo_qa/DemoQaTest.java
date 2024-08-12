@@ -1,7 +1,6 @@
-package tests.positive;
+package tests.demo_qa;
 
 import org.testng.annotations.Test;
-import tests.BaseTest;
 
 public class DemoQaTest extends BaseTest {
 
