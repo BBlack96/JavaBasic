@@ -5,52 +5,64 @@ import demo_qa.locators.ElementsPageLocators;
 public class ElementsPage extends BasePage {
     final String pageUrl = "https://demoqa.com/elements";
 
-    public void openPage() {
+    public ElementsPage openPage() {
         open(pageUrl);
+        return this;
     }
 
-    public void openTextBoxTab() {
+    public ElementsPage openTextBoxTab() {
         $((ElementsPageLocators.ElementsMainPage.TEXT_BOX.getLocator())).click();
+        return this;
     }
 
-    public void openCheckBoxTab() {
+    public ElementsPage openCheckBoxTab() {
         $((ElementsPageLocators.ElementsMainPage.CHECK_BOX.getLocator())).click();
+        return this;
     }
 
-    public void openRadioButtonTab() {
+    public ElementsPage openRadioButtonTab() {
         $((ElementsPageLocators.ElementsMainPage.RADIO_BUTTON.getLocator())).click();
+        return this;
     }
 
-    public void openWebTablesTab() {
+    public ElementsPage openWebTablesTab() {
         $((ElementsPageLocators.ElementsMainPage.WEB_TABLES.getLocator())).click();
+        return this;
     }
 
-    public void openButtonsTab() {
+    public ElementsPage openButtonsTab() {
         $((ElementsPageLocators.ElementsMainPage.BUTTONS.getLocator())).click();
+        return this;
     }
 
-    public void openLinksTab() {
+    public ElementsPage openLinksTab() {
         $((ElementsPageLocators.ElementsMainPage.LINKS.getLocator())).click();
+        return this;
     }
 
-    public void openBrokenLinksTab() {
+    public ElementsPage openBrokenLinksTab() {
         $((ElementsPageLocators.ElementsMainPage.BROKEN_LINKS.getLocator())).click();
+        return this;
     }
 
-    public void openUploadDownloadTab() {
+    public ElementsPage openUploadDownloadTab() {
         $((ElementsPageLocators.ElementsMainPage.UPLOAD_DOWNLOAD.getLocator())).click();
+        return this;
     }
 
-    public void openDynamicPropertiesTab() {
+    public ElementsPage openDynamicPropertiesTab() {
         $((ElementsPageLocators.ElementsMainPage.DYNAMIC_PROPERTIES.getLocator())).click();
+        return this;
     }
 
-    public void setFullName(String fullName) {
+    public ElementsPage setFullName(String fullName) {
         $((ElementsPageLocators.TextBoxPage.FULL_NAME_INPUT.getLocator())).setValue(fullName);
+        return this;
     }
 
-    public void clickCheckBox(){
+    public ElementsPage clickCheckBox(){
         $(ElementsPageLocators.CheckBoxPage.CHECKBOX.getLocator()).click();
+        return this;
     }
 
 }

@@ -1,17 +1,16 @@
 package tests.demo_qa;
 
+import demo_qa.pages.ElementsPage;
 import org.testng.annotations.Test;
 
-public class DemoQaTest extends BaseTest {
+public class DemoQaTest {
 
     @Test
     public void firstTest() {
-        elementsPage().openPage();
-        elementsPage().openCheckBoxTab();
-        elementsPage().clickCheckBox();
-
-
-
+        new ElementsPage()
+                .openPage()
+                .openCheckBoxTab()
+        ;
     }
 
 }

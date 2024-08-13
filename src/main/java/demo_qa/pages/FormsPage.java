@@ -4,7 +4,8 @@ public class FormsPage extends BasePage {
 
     final String pageUrl = "https://demoqa.com/forms";
 
-    public void openPage() {
+    public FormsPage openPage() {
         open(pageUrl);
+        return this;
     }
 }

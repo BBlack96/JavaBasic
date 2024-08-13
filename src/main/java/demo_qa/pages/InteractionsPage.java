@@ -4,7 +4,8 @@ public class InteractionsPage extends BasePage {
 
     final String pageUrl = "https://demoqa.com/interactions";
 
-    public void openPage() {
+    public InteractionsPage openPage() {
         open(pageUrl);
+        return this;
     }
 }

@@ -4,7 +4,8 @@ public class BookStorePage extends BasePage {
 
     final String pageUrl = "https://demoqa.com/books";
 
-    public void openPage() {
+    public BookStorePage openPage() {
         open(pageUrl);
+        return this;
     }
 }
