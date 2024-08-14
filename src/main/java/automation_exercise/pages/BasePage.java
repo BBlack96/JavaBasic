@@ -19,11 +19,11 @@ public class BasePage {
     }
 
     public void isVisible(By locator) {
-        Selenide.$(locator).shouldHave(Condition.visible);
+        $(locator).shouldHave(Condition.visible);
     }
 
     public void isNotVisible(By locator) {
-        Selenide.$(locator).shouldNot(Condition.visible);
+        $(locator).shouldNot(Condition.visible);
     }
 
     public String getURL() {
@@ -35,7 +35,7 @@ public class BasePage {
     }
 
     public void checkText(By locator, String text){
-        Selenide.$(locator).shouldHave(Condition.text(text));
+        $(locator).shouldHave(Condition.text(text));
     }
 
 }
