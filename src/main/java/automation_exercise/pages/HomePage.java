@@ -31,6 +31,16 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    public HomePage checkLoggedUser(String username) {
+       checkText(HomeLocators.LOGGED_USER_FIELD.getLocator(), username);
+        return this;
+    }
+
+    public HomePage refreshPage(){
+        refresh();
+        return this;
+    }
+
 
 
 

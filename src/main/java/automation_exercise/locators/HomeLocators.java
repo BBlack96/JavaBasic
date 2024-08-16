@@ -8,6 +8,7 @@ public enum HomeLocators {
     CART_BUTTON(By.xpath("//a[text()=' Cart']")),
     LOGIN_BUTTON(By.xpath("//a[contains(text(), 'Login')]")),
     CONTACT_US_BUTTON(By.xpath("//a[contains(text(), 'Contact')]")),
+    LOGGED_USER_FIELD(By.xpath("//i[contains(@class, 'fa fa-user')]/..")),
     ;
 
     private final By locator;

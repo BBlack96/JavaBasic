@@ -2,12 +2,14 @@ package automation_exercise.pages;
 
 import org.openqa.selenium.By;
 import com.codeborne.selenide.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BasePage {
     static {
         Configuration.browser = "chrome";
-        Configuration.baseUrl = "https://www.automationexercise.com/";
+        Configuration.baseUrl = "https://www.automationexercise.com";
         Configuration.timeout = 10000;
+
     }
 
     public void open(String url) {
@@ -23,7 +25,7 @@ public class BasePage {
     }
 
     public void isNotVisible(By locator) {
-        $(locator).shouldNot(Condition.visible);
+        $(locator).shouldNotBe(Condition.visible);
     }
 
     public String getURL() {
@@ -37,6 +39,23 @@ public class BasePage {
     public void checkText(By locator, String text){
         $(locator).shouldHave(Condition.text(text));
     }
+
+    public void clearInput(By locator){
+        $(locator).clear();
+    }
+
+    public void refresh(){
+        Selenide.refresh();
+    }
+
+    public String getTitle(){
+        return Selenide.title();
+    }
+
+    public void closeTab(){
+        Selenide.closeWindow();
+    }
+
 
 }
 
