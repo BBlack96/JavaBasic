@@ -1,13 +1,12 @@
 package tests.automation_exercise.ui_tests;
 
 import automation_exercise.pages.*;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import automation_exercise.utils.Utils;
 
 public class AutomationExerciseTest {
 
-    @BeforeTest
+    @BeforeSuite
     public void setup() {
         BasePage basePage = new BasePage();
         basePage.open("chrome://extensions/");
@@ -19,8 +18,8 @@ public class AutomationExerciseTest {
         basePage.closeExtraTabs();
     }
 
-    @Test
-    public void firstTest() {
+    @Test(priority = 1)
+    public void RegisterUser() {
         new HomePage()
                 .openPage()
                 .verifyURL()
@@ -28,7 +27,7 @@ public class AutomationExerciseTest {
         ;
         new LoginPage()
                 .checkSignupFormTitle()
-                .enterNewUserEmail("SelenideTest"+ Utils.getRandomNumber() + "@gmail.com")
+                .enterNewUserEmail("SelenideTest797@gmail.com")
                 .enterNewUserName("John Doe")
                 .clickSignupButton()
         ;
@@ -59,6 +58,26 @@ public class AutomationExerciseTest {
                 .clickContinueButton()
                 ;
         new HomePage()
-                .checkLoggedUser("Alan Wake");
+                .checkLoggedUser("Alan Wake")
+                .clickLogoutButton()
+                ;
+    }
+
+    @Test(priority = 2)
+    public void LoginUserWithCorrectEmailAndPassword() {
+        new HomePage()
+                .openPage()
+                .verifyURL()
+                .clickLoginButton();
+        new LoginPage()
+                .checkSignInTitle()
+                .enterLoginEmail("SelenideTest797@gmail.com")
+                .enterLoginPassword("MyTestPassword123!")
+                .clickLoginButton();
+        new HomePage()
+                .checkLoggedUser("Alan Wake")
+                .clickDeleteAccountButton()
+                .checkAccountDeletedMessage()
+                ;
     }
 }

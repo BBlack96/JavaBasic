@@ -9,7 +9,8 @@ public enum LoginLocators {
     SIGNUP_BUTTON(By.xpath("//button[@data-qa='signup-button']")),
     LOGIN_EMAIL_INPUT(By.xpath("//input[@data-qa='login-email']")),
     LOGIN_PASSWORD_INPUT(By.xpath("//input[@data-qa='login-password']")),
-    LOGIN_BUTTON(By.xpath("//button[@data-qa='login-button']"))
+    LOGIN_BUTTON(By.xpath("//button[@data-qa='login-button']")),
+    SING_IN_TITLE(By.xpath("//div[@class='login-form']/h2")),
 
     ;
 

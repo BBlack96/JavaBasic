@@ -16,6 +16,11 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    public LoginPage checkSignInTitle() {
+        isVisible(LoginLocators.SING_IN_TITLE.getLocator());
+        return this;
+    }
+
     public LoginPage enterNewUserName(String username) {
         $(LoginLocators.NEW_USERNAME_INPUT.getLocator()).setValue(username);
         return this;
