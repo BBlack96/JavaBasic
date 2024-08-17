@@ -1,22 +1,22 @@
 package tests.automation_exercise.ui_tests;
 
-import automation_exercise.pages.HomePage;
-import automation_exercise.pages.LoginPage;
-import automation_exercise.pages.SignupPage;
-import automation_exercise.pages.AccountCreatedPage;
-import org.testng.annotations.DataProvider;
+import automation_exercise.pages.*;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import automation_exercise.utils.Utils;
 
 public class AutomationExerciseTest {
 
-    @DataProvider(name = "UserInfo")
-    public Object[][] UserInfo() {
-        return new Object[][]{
-                {"Alan", "Wake"},
-                {"John", "Doe"},
-                {"Jane", "Doe"}
-        };
+    @BeforeTest
+    public void setup() {
+        BasePage basePage = new BasePage();
+        basePage.open("chrome://extensions/");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        basePage.closeExtraTabs();
     }
 
     @Test
@@ -60,19 +60,5 @@ public class AutomationExerciseTest {
                 ;
         new HomePage()
                 .checkLoggedUser("Alan Wake");
-    }
-
-    @Test
-    public void SecondTest(){
-        new HomePage()
-                .openPage()
-
-        ;
-
-        try {
-            Thread.sleep(50000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
