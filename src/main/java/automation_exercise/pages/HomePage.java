@@ -11,23 +11,18 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage verifyLogoIsVisible() {
-        isVisible(HomeLocators.LOGO.getLocator());
-        return this;
-    }
-
     public HomePage clickProductsButton() {
         $(HomeLocators.PRODUCTS_BUTTON.getLocator()).click();
         return this;
     }
 
-    public HomePage clickTestCasesButton() {
-        $(HomeLocators.TEST_CASES_BUTTON.getLocator()).click();
+    public HomePage clickCartButton() {
+        $(HomeLocators.CART_BUTTON.getLocator()).click();
         return this;
     }
 
-    public HomePage verifyURL() {
-        checkURL(pageUrl);
+    public HomePage clickTestCasesButton() {
+        $(HomeLocators.TEST_CASES_BUTTON.getLocator()).click();
         return this;
     }
 
@@ -61,7 +56,24 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public void clickContactUsButton() {
+    public HomePage clickContactUsButton() {
         $(HomeLocators.CONTACT_US_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public HomePage checkFooterSubscriptionTitle() {
+        checkText(HomeLocators.FOOTER_SUBSCRIPTION_TITLE.getLocator(), "Subscription");
+        return this;
+    }
+
+    public HomePage enterEmailForSubscription(String email) {
+        $(HomeLocators.SUBSCRIBE_EMAIL_INPUT.getLocator()).setValue(email);
+        $(HomeLocators.SUBSCRIBE_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public HomePage checkSubscriptionSuccessMessage() {
+        checkText(HomeLocators.SUCCESS_SUBSCRIPTION_MESSAGE.getLocator(), "You have been successfully subscribed!");
+        return this;
     }
 }

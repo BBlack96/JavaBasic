@@ -26,8 +26,13 @@ public class ProductsPage extends BasePage {
         return this;
     }
 
-    public ProductsPage clickSingleProductViewButton(int productIndex) {
-        $$(ProductsLocators.SINGLE_PRODUCT_VIEW_BUTTON.getLocator()).get(productIndex).click();
+    public ProductsPage clickProductViewButtonByIndex(int productIndex) {
+        $$(ProductsLocators.SINGLE_PRODUCT_VIEW_BUTTON.getLocator()).get(productIndex-1).click();
+        return this;
+    }
+
+    public ProductsPage addProductToCartByIndex(int productIndex) {
+        $$(ProductsLocators.SINGLE_PRODUCT_ADD_TO_CART_BUTTON.getLocator()).get(productIndex-1).click();
         return this;
     }
 
@@ -81,6 +86,23 @@ public class ProductsPage extends BasePage {
         checkText(ProductsLocators.SEARCH_RESULT_PRODUCT_NAME.getLocator(), productName);
         return this;
     }
+
+    public ProductsPage clickContinueShoppingButton() {
+        $(ProductsLocators.CONTINUE_SHOPPING_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public ProductsPage clickViewCartLink() {
+        $(ProductsLocators.VIEW_CART_LINK.getLocator()).click();
+        return this;
+    }
+
+    public ProductsPage addProductByName(String productName) {
+        $(ProductsLocators.PRODUCT_LINK.getLocator(productName)).click();
+        return this;
+    }
+
+
 
 
 }

@@ -36,10 +36,6 @@ public class BasePage {
         $(locator).shouldNotBe(Condition.visible);
     }
 
-    public String getURL() {
-        return WebDriverRunner.url();
-    }
-
     public boolean checkURL(String url) {
         return WebDriverRunner.url().equals(url);
     }
@@ -50,18 +46,6 @@ public class BasePage {
 
     public void clearInput(By locator) {
         $(locator).clear();
-    }
-
-    public void refresh() {
-        Selenide.refresh();
-    }
-
-    public String getTitle() {
-        return Selenide.title();
-    }
-
-    public void closeTab() {
-        Selenide.closeWindow();
     }
 
     public void closeExtraTabs() {
@@ -82,12 +66,6 @@ public class BasePage {
     public void acceptAlert(){
         WebDriverRunner.getWebDriver().switchTo().alert().accept();
     }
-
-    public void clickByIndex(By locator, int index) {
-        $$(locator).get(index).click();
-    }
-
-
 
 }
 

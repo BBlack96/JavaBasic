@@ -12,7 +12,11 @@ public enum HomeLocators {
     DELETE_ACCOUNT_BUTTON(By.xpath("//a[text()=' Delete Account']")),
     ACCOUNT_DELETED_MESSAGE(By.xpath("//h2/b[text()='Account Deleted!']")),
     LOGOUT_BUTTON(By.xpath("//a[text()=' Logout']")),
-    TEST_CASES_BUTTON(By.xpath("//a[text()=' Test Cases']"))
+    TEST_CASES_BUTTON(By.xpath("//a[text()=' Test Cases']")),
+    FOOTER_SUBSCRIPTION_TITLE(By.xpath("//footer//h2")),
+    SUBSCRIBE_EMAIL_INPUT(By.id("susbscribe_email")),
+    SUBSCRIBE_BUTTON(By.id("subscribe")),
+    SUCCESS_SUBSCRIPTION_MESSAGE(By.id("success-subscribe")),
     ;
 
     private final By locator;

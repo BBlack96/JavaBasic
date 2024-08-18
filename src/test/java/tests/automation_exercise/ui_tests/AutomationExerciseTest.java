@@ -2,7 +2,6 @@ package tests.automation_exercise.ui_tests;
 
 import automation_exercise.pages.*;
 import org.testng.annotations.*;
-import automation_exercise.utils.Utils;
 
 public class AutomationExerciseTest {
 
@@ -152,7 +151,7 @@ public class AutomationExerciseTest {
         new ProductsPage()
                 .checkTitle()
                 .productsListIsVisible()
-                .clickSingleProductViewButton(0)
+                .clickProductViewButtonByIndex(1)
                 .checkProductDetailsTitle()
                 .productNameIsVisible()
                 .productCategoryIsVisible()
@@ -170,7 +169,39 @@ public class AutomationExerciseTest {
                 .productsListIsVisible()
                 .searchProduct("Men Tshirt")
                 .checkSearchedProductsTitle()
-                .checkSearchResultProductName("Men Tshirt")
-                ;
+                .checkSearchResultProductName("Men Tshirt");
+    }
+
+    @Test(priority = 10)
+    public void VerifySubscriptionInHomePage(){
+        new HomePage()
+                .checkFooterSubscriptionTitle()
+                .enterEmailForSubscription("test@gmail.com")
+                .checkSubscriptionSuccessMessage();
+    }
+
+    @Test(priority = 11)
+    public  void  VerifySubscriptionInCartPage(){
+        new HomePage()
+                .clickCartButton();
+        new CartPage()
+                .checkFooterSubscriptionTitle()
+                .enterEmailForSubscription("test@gmail.com")
+                .checkSubscriptionSuccessMessage();
+    }
+
+    @Test(priority = 12)
+    public void AddProductsInCart(){
+        new HomePage()
+                .clickProductsButton();
+        new ProductsPage()
+                .productsListIsVisible()
+                .addProductByName("Blue Top")
+                .clickContinueShoppingButton()
+                .addProductToCartByIndex(3)
+                .clickViewCartLink();
+        new CartPage()
+                .checkProductInCart("Blue Top")
+                .checkProductInCart("Men Tshirt");
     }
 }
