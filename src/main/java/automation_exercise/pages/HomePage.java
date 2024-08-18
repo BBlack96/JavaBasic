@@ -21,14 +21,18 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    public HomePage clickTestCasesButton() {
+        $(HomeLocators.TEST_CASES_BUTTON.getLocator()).click();
+        return this;
+    }
+
     public HomePage verifyURL() {
         checkURL(pageUrl);
         return this;
     }
 
     public HomePage clickLoginButton() {
-        $(HomeLocators.LOGIN_BUTTON.getLocator()).click();
-        return this;
+        return null;
     }
 
     public HomePage checkLoggedUser(String username) {
@@ -49,5 +53,14 @@ public class HomePage extends BasePage {
     public HomePage clickLogoutButton() {
         $(HomeLocators.LOGOUT_BUTTON.getLocator()).click();
         return this;
+    }
+
+    public HomePage checkCurrentPage(){
+        checkPageTitle("Automation Exercise");
+        return this;
+    }
+
+    public void clickContactUsButton() {
+        $(HomeLocators.CONTACT_US_BUTTON.getLocator()).click();
     }
 }

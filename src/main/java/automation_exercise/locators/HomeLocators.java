@@ -11,7 +11,8 @@ public enum HomeLocators {
     LOGGED_USER_FIELD(By.xpath("//i[contains(@class, 'fa fa-user')]/..")),
     DELETE_ACCOUNT_BUTTON(By.xpath("//a[text()=' Delete Account']")),
     ACCOUNT_DELETED_MESSAGE(By.xpath("//h2/b[text()='Account Deleted!']")),
-    LOGOUT_BUTTON(By.xpath("//a[text()=' Logout']"))
+    LOGOUT_BUTTON(By.xpath("//a[text()=' Logout']")),
+    TEST_CASES_BUTTON(By.xpath("//a[text()=' Test Cases']"))
     ;
 
     private final By locator;

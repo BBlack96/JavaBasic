@@ -51,5 +51,20 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    public LoginPage checkWrongCredentialsMessage() {
+        isVisible(LoginLocators.WRONG_CREDENTIALS_MESSAGE.getLocator());
+        return this;
+    }
+
+    public LoginPage checkCurrentPage(){
+        checkPageTitle("Automation Exercise - Signup / Login");
+        return this;
+    }
+
+    public LoginPage checkExistingCredsMessage(){
+        isVisible(LoginLocators.EXISTING_CREDS_MESSAGE.getLocator());
+        return this;
+    }
+
 
 }

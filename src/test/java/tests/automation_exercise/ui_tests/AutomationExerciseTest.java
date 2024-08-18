@@ -22,7 +22,7 @@ public class AutomationExerciseTest {
     public void RegisterUser() {
         new HomePage()
                 .openPage()
-                .verifyURL()
+                .checkCurrentPage()
                 .clickLoginButton()
         ;
         new LoginPage()
@@ -56,18 +56,18 @@ public class AutomationExerciseTest {
         new AccountCreatedPage()
                 .verifyAccountCreatedTitle()
                 .clickContinueButton()
-                ;
+        ;
         new HomePage()
                 .checkLoggedUser("Alan Wake")
                 .clickLogoutButton()
-                ;
+        ;
     }
 
     @Test(priority = 2)
     public void LoginUserWithCorrectEmailAndPassword() {
         new HomePage()
                 .openPage()
-                .verifyURL()
+                .checkCurrentPage()
                 .clickLoginButton();
         new LoginPage()
                 .checkSignInTitle()
@@ -78,6 +78,85 @@ public class AutomationExerciseTest {
                 .checkLoggedUser("Alan Wake")
                 .clickDeleteAccountButton()
                 .checkAccountDeletedMessage()
-                ;
+        ;
+    }
+
+    @Test(priority = 3)
+    public void LoginUserWithIncorrectEmailAndPassword() {
+        new HomePage()
+                .openPage()
+                .checkCurrentPage()
+                .clickLoginButton();
+        new LoginPage()
+                .checkSignInTitle()
+                .enterLoginEmail("invalidEmail@gmail.com")
+                .enterLoginPassword("invalidPassword")
+                .clickLoginButton()
+                .checkWrongCredentialsMessage()
+        ;
+    }
+
+    @Test(priority = 4)
+    public void LogoutUser() {
+        new HomePage()
+                .openPage()
+                .checkCurrentPage()
+                .clickLoginButton();
+        new LoginPage()
+                .checkSignInTitle()
+                .enterLoginEmail("ValidUser+1@gmail.com")
+                .enterLoginPassword("ValidUser+1@gmail.com")
+                .clickLoginButton();
+        new HomePage()
+                .checkLoggedUser("Alan Wake")
+                .clickLogoutButton();
+        new LoginPage()
+                .checkCurrentPage();
+    }
+
+    @Test(priority = 5)
+    public void RegisterUserWithExistingEmail() {
+        new HomePage()
+                .openPage()
+                .checkCurrentPage()
+                .clickLoginButton();
+        new LoginPage()
+                .checkSignupFormTitle()
+                .enterNewUserEmail("ValidUser+1@gmail.com")
+                .enterNewUserName("John Doe")
+                .clickSignupButton()
+                .checkExistingCredsMessage();
+    }
+
+    @Test(priority = 6)
+    public void ContactUsForm() {
+        new HomePage()
+                .openPage()
+                .checkCurrentPage()
+                .clickContactUsButton();
+        new ContactUsPage()
+                .checkGetInTouchTitle()
+                .enterName("John Doe")
+                .enterEmail("SomeTestEmail@gmail.com")
+                .enterSubject("Test Subject")
+                .enterMessage("Test Message")
+                .uploadFile("dog.jpg")
+                .clickSubmitButton()
+                .OkAlert()
+                .isVisibleAlertStatusMessage()
+                .clickHomeButton()
+        ;
+        new HomePage()
+                .checkCurrentPage();
+    }
+
+    @Test(priority = 7)
+    public void VerifyTestCasesPage() {
+        new HomePage()
+                .openPage()
+                .checkCurrentPage()
+                .clickTestCasesButton();
+        new TestCasesPage()
+                .checkTitle();
     }
 }

@@ -71,6 +71,15 @@ public class BasePage {
         WebDriverRunner.getWebDriver().switchTo().window(originalHandle);
     }
 
+    public void checkPageTitle(String title) {
+        Selenide.title().equals(title);
+    }
+
+    public void acceptAlert(){
+        WebDriverRunner.getWebDriver().switchTo().alert().accept();
+    }
+
+
 
 }
 

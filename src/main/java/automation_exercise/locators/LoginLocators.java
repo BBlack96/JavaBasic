@@ -11,6 +11,8 @@ public enum LoginLocators {
     LOGIN_PASSWORD_INPUT(By.xpath("//input[@data-qa='login-password']")),
     LOGIN_BUTTON(By.xpath("//button[@data-qa='login-button']")),
     SING_IN_TITLE(By.xpath("//div[@class='login-form']/h2")),
+    WRONG_CREDENTIALS_MESSAGE(By.xpath("//form[@action='/login']/p")),
+    EXISTING_CREDS_MESSAGE(By.xpath("//form[@action='/signup']/p")),
 
     ;
 
