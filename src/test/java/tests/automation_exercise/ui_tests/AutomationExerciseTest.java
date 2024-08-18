@@ -18,19 +18,22 @@ public class AutomationExerciseTest {
         basePage.closeExtraTabs();
     }
 
+    @BeforeMethod
+    public void openMainPage() {
+        new HomePage()
+                .openPage()
+                .checkCurrentPage();
+    }
+
     @Test(priority = 1)
     public void RegisterUser() {
         new HomePage()
-                .openPage()
-                .checkCurrentPage()
-                .clickLoginButton()
-        ;
+                .clickLoginButton();
         new LoginPage()
                 .checkSignupFormTitle()
                 .enterNewUserEmail("SelenideTest797@gmail.com")
                 .enterNewUserName("John Doe")
-                .clickSignupButton()
-        ;
+                .clickSignupButton();
         new SignupPage()
                 .checkSignupFormTitle()
                 .selectMaleGender()
@@ -51,23 +54,18 @@ public class AutomationExerciseTest {
                 .enterCity("New York")
                 .enterZipCode("10001")
                 .enterMobileNumber("123456789")
-                .clickCreateAccountButton()
-        ;
+                .clickCreateAccountButton();
         new AccountCreatedPage()
                 .verifyAccountCreatedTitle()
-                .clickContinueButton()
-        ;
+                .clickContinueButton();
         new HomePage()
                 .checkLoggedUser("Alan Wake")
-                .clickLogoutButton()
-        ;
+                .clickLogoutButton();
     }
 
     @Test(priority = 2)
     public void LoginUserWithCorrectEmailAndPassword() {
         new HomePage()
-                .openPage()
-                .checkCurrentPage()
                 .clickLoginButton();
         new LoginPage()
                 .checkSignInTitle()
@@ -77,30 +75,24 @@ public class AutomationExerciseTest {
         new HomePage()
                 .checkLoggedUser("Alan Wake")
                 .clickDeleteAccountButton()
-                .checkAccountDeletedMessage()
-        ;
+                .checkAccountDeletedMessage();
     }
 
     @Test(priority = 3)
     public void LoginUserWithIncorrectEmailAndPassword() {
         new HomePage()
-                .openPage()
-                .checkCurrentPage()
                 .clickLoginButton();
         new LoginPage()
                 .checkSignInTitle()
                 .enterLoginEmail("invalidEmail@gmail.com")
                 .enterLoginPassword("invalidPassword")
                 .clickLoginButton()
-                .checkWrongCredentialsMessage()
-        ;
+                .checkWrongCredentialsMessage();
     }
 
     @Test(priority = 4)
     public void LogoutUser() {
         new HomePage()
-                .openPage()
-                .checkCurrentPage()
                 .clickLoginButton();
         new LoginPage()
                 .checkSignInTitle()
@@ -117,8 +109,6 @@ public class AutomationExerciseTest {
     @Test(priority = 5)
     public void RegisterUserWithExistingEmail() {
         new HomePage()
-                .openPage()
-                .checkCurrentPage()
                 .clickLoginButton();
         new LoginPage()
                 .checkSignupFormTitle()
@@ -131,8 +121,6 @@ public class AutomationExerciseTest {
     @Test(priority = 6)
     public void ContactUsForm() {
         new HomePage()
-                .openPage()
-                .checkCurrentPage()
                 .clickContactUsButton();
         new ContactUsPage()
                 .checkGetInTouchTitle()
@@ -144,8 +132,7 @@ public class AutomationExerciseTest {
                 .clickSubmitButton()
                 .OkAlert()
                 .isVisibleAlertStatusMessage()
-                .clickHomeButton()
-        ;
+                .clickHomeButton();
         new HomePage()
                 .checkCurrentPage();
     }
@@ -153,10 +140,25 @@ public class AutomationExerciseTest {
     @Test(priority = 7)
     public void VerifyTestCasesPage() {
         new HomePage()
-                .openPage()
-                .checkCurrentPage()
                 .clickTestCasesButton();
         new TestCasesPage()
                 .checkTitle();
+    }
+
+    @Test(priority = 8)
+    public void VerifyAllProductsAndProductDetailPage() {
+        new HomePage()
+                .clickProductsButton();
+        new ProductsPage()
+                .checkTitle()
+                .productsListIsVisible()
+                .clickSingleProductViewButton(0)
+                .checkProductDetailsTitle()
+                .productNameIsVisible()
+                .productCategoryIsVisible()
+                .productPriceIsVisible()
+                .productAvailabilityIsVisible()
+                .productConditionIsVisible()
+                .productBrandIsVisible();
     }
 }

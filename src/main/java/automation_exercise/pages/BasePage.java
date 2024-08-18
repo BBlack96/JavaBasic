@@ -24,6 +24,10 @@ public class BasePage {
         return Selenide.$(locator);
     }
 
+    public ElementsCollection $$ (By locator) {
+        return Selenide.$$(locator);
+    }
+
     public void isVisible(By locator) {
         $(locator).shouldHave(Condition.visible);
     }
@@ -78,6 +82,12 @@ public class BasePage {
     public void acceptAlert(){
         WebDriverRunner.getWebDriver().switchTo().alert().accept();
     }
+
+    public void clickByIndex(By locator, int index) {
+        $$(locator).get(index).click();
+    }
+
+    
 
 
 

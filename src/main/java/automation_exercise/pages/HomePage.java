@@ -32,7 +32,8 @@ public class HomePage extends BasePage {
     }
 
     public HomePage clickLoginButton() {
-        return null;
+        $(HomeLocators.LOGIN_BUTTON.getLocator()).click();
+        return this;
     }
 
     public HomePage checkLoggedUser(String username) {
