@@ -61,5 +61,26 @@ public class ProductsPage extends BasePage {
         return this;
     }
 
+    public ProductsPage searchProduct(String productName) {
+        $(ProductsLocators.SEARCH_INPUT.getLocator()).setValue(productName);
+        $(ProductsLocators.SEARCH_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public ProductsPage checkSearchedProductsTitle() {
+        isVisible(ProductsLocators.SEARCHED_PRODUCTS_TITLE.getLocator());
+        return this;
+    }
+
+    public ProductsPage searchResultsAreVisible() {
+        isVisible(ProductsLocators.SEARCH_RESULT_PRODUCT_NAME.getLocator());
+        return this;
+    }
+
+    public  ProductsPage checkSearchResultProductName(String productName) {
+        checkText(ProductsLocators.SEARCH_RESULT_PRODUCT_NAME.getLocator(), productName);
+        return this;
+    }
+
 
 }

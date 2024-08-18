@@ -11,6 +11,10 @@ public enum ProductsLocators {
     PRODUCT_AVAILABILITY(By.xpath("//div[@class='product-information']//b[text()='Availability:']")),
     PRODUCT_CONDITION(By.xpath("//div[@class='product-information']//b[text()='Condition:']")),
     PRODUCT_BRAND(By.xpath("//div[@class='product-information']//b[text()='Brand:']")),
+    SEARCH_INPUT(By.id("search_product")),
+    SEARCH_BUTTON(By.id("submit_search")),
+    SEARCHED_PRODUCTS_TITLE(By.xpath("//div[@class='features_items']/h2")),
+    SEARCH_RESULT_PRODUCT_NAME(By.xpath("//div[contains(@class, 'productinfo')]/p")),
     ;
 
     private final By locator;

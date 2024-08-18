@@ -161,4 +161,16 @@ public class AutomationExerciseTest {
                 .productConditionIsVisible()
                 .productBrandIsVisible();
     }
+
+    @Test(priority = 9)
+    public void SearchProduct(){
+        new HomePage()
+                .clickProductsButton();
+        new ProductsPage()
+                .productsListIsVisible()
+                .searchProduct("Men Tshirt")
+                .checkSearchedProductsTitle()
+                .checkSearchResultProductName("Men Tshirt")
+                ;
+    }
 }
