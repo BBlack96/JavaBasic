@@ -1,9 +1,12 @@
 package tests.automation_exercise.ui_tests;
 
 import automation_exercise.pages.*;
+import automation_exercise.utils.EnvConfig;
 import org.testng.annotations.*;
 
 public class AutomationExerciseTest {
+
+    EnvConfig config = new EnvConfig();
 
     @BeforeSuite
     public void setup() {
@@ -30,35 +33,35 @@ public class AutomationExerciseTest {
                 .clickLoginButton();
         new LoginPage()
                 .checkSignupFormTitle()
-                .enterNewUserEmail("SelenideTest797@gmail.com")
-                .enterNewUserName("John Doe")
+                .enterNewUserEmail(config.getNewUserEmail())
+                .enterNewUserName(config.getNewUserName())
                 .clickSignupButton();
         new SignupPage()
                 .checkSignupFormTitle()
                 .selectMaleGender()
-                .enterNewUserName("Alan Wake")
-                .enterNewUserPassword("MyTestPassword123!")
+                .enterNewUserName(config.getNewUserName())
+                .enterNewUserPassword(config.getNewUserPassword())
                 .selectDayOfBirth(24)
                 .selectMonthOfBirth("May")
                 .selectYearOfBirth("1990")
                 .selectNewsletterSubscription()
                 .selectSpecialOffersSubscription()
-                .enterFirstName("Alan")
-                .enterLastName("Wake")
-                .enterCompanyName("Remedy Entertainment")
-                .enterAddress1("Asema-aukio 2")
-                .enterAddress2("PL 20")
-                .selectCountry("United States")
-                .enterState("New York")
-                .enterCity("New York")
-                .enterZipCode("10001")
-                .enterMobileNumber("123456789")
+                .enterFirstName(config.getNewUserFirstName())
+                .enterLastName(config.getNewUserLastName())
+                .enterCompanyName(config.getNewUserCompanyName())
+                .enterAddress1(config.getNewUserAddress1())
+                .enterAddress2(config.getNewUserAddress2())
+                .selectCountry(config.getNewUserCountry())
+                .enterState(config.getNewUserState())
+                .enterCity(config.getNewUserCity())
+                .enterZipCode(config.getNewUserZipCode())
+                .enterMobileNumber(config.getNewUserMobileNumber())
                 .clickCreateAccountButton();
         new AccountCreatedPage()
                 .verifyAccountCreatedTitle()
                 .clickContinueButton();
         new HomePage()
-                .checkLoggedUser("Alan Wake")
+                .checkLoggedUser(config.getNewUserName())
                 .clickLogoutButton();
     }
 
@@ -68,11 +71,11 @@ public class AutomationExerciseTest {
                 .clickLoginButton();
         new LoginPage()
                 .checkSignInTitle()
-                .enterLoginEmail("SelenideTest797@gmail.com")
-                .enterLoginPassword("MyTestPassword123!")
+                .enterLoginEmail(config.getNewUserEmail())
+                .enterLoginPassword(config.getNewUserPassword())
                 .clickLoginButton();
         new HomePage()
-                .checkLoggedUser("Alan Wake")
+                .checkLoggedUser(config.getNewUserName())
                 .clickDeleteAccountButton()
                 .checkAccountDeletedMessage();
     }
@@ -83,8 +86,8 @@ public class AutomationExerciseTest {
                 .clickLoginButton();
         new LoginPage()
                 .checkSignInTitle()
-                .enterLoginEmail("invalidEmail@gmail.com")
-                .enterLoginPassword("invalidPassword")
+                .enterLoginEmail(config.getInvalidUserEmail())
+                .enterLoginPassword(config.getInvalidUserPassword())
                 .clickLoginButton()
                 .checkWrongCredentialsMessage();
     }
@@ -95,11 +98,11 @@ public class AutomationExerciseTest {
                 .clickLoginButton();
         new LoginPage()
                 .checkSignInTitle()
-                .enterLoginEmail("ValidUser+1@gmail.com")
-                .enterLoginPassword("ValidUser+1@gmail.com")
+                .enterLoginEmail(config.getValidUserEmail())
+                .enterLoginPassword(config.getValidUserPassword())
                 .clickLoginButton();
         new HomePage()
-                .checkLoggedUser("Alan Wake")
+                .checkLoggedUser(config.getValidUserName())
                 .clickLogoutButton();
         new LoginPage()
                 .checkCurrentPage();
@@ -111,8 +114,8 @@ public class AutomationExerciseTest {
                 .clickLoginButton();
         new LoginPage()
                 .checkSignupFormTitle()
-                .enterNewUserEmail("ValidUser+1@gmail.com")
-                .enterNewUserName("John Doe")
+                .enterNewUserEmail(config.getValidUserEmail())
+                .enterNewUserName(config.getValidUserName())
                 .clickSignupButton()
                 .checkExistingCredsMessage();
     }
@@ -123,11 +126,11 @@ public class AutomationExerciseTest {
                 .clickContactUsButton();
         new ContactUsPage()
                 .checkGetInTouchTitle()
-                .enterName("John Doe")
-                .enterEmail("SomeTestEmail@gmail.com")
-                .enterSubject("Test Subject")
-                .enterMessage("Test Message")
-                .uploadFile("dog.jpg")
+                .enterName(config.getContactUserName())
+                .enterEmail(config.getContactUserEmail())
+                .enterSubject(config.getContactUserSubject())
+                .enterMessage(config.getContactUserMessage())
+                .uploadFile(config.getContactUserFileName())
                 .clickSubmitButton()
                 .OkAlert()
                 .isVisibleAlertStatusMessage()
@@ -176,7 +179,7 @@ public class AutomationExerciseTest {
     public void VerifySubscriptionInHomePage(){
         new HomePage()
                 .checkFooterSubscriptionTitle()
-                .enterEmailForSubscription("test@gmail.com")
+                .enterEmailForSubscription(config.getSubscriptionEmail())
                 .checkSubscriptionSuccessMessage();
     }
 
@@ -186,7 +189,7 @@ public class AutomationExerciseTest {
                 .clickCartButton();
         new CartPage()
                 .checkFooterSubscriptionTitle()
-                .enterEmailForSubscription("test@gmail.com")
+                .enterEmailForSubscription(config.getSubscriptionEmail())
                 .checkSubscriptionSuccessMessage();
     }
 
