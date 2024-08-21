@@ -1,10 +1,11 @@
+// AutomationExerciseTest.java
 package tests.automation_exercise.ui_tests;
 
-import automation_exercise.pages.*;
+import automation_exercise.pages.BasePage;
 import automation_exercise.utils.EnvConfig;
 import org.testng.annotations.*;
 
-public class AutomationExerciseTest {
+public class AutomationExerciseTest extends BaseTest {
 
     EnvConfig config = new EnvConfig();
 
@@ -22,22 +23,17 @@ public class AutomationExerciseTest {
 
     @BeforeMethod
     public void openMainPage() {
-        new HomePage()
-                .openPage()
-                .checkCurrentPage();
+        homePage.openPage().checkCurrentPage();
     }
 
     @Test(priority = 1)
     public void RegisterUser() {
-        new HomePage()
-                .clickLoginButton();
-        new LoginPage()
-                .checkSignupFormTitle()
+        homePage.clickLoginButton();
+        loginPage.checkSignupFormTitle()
                 .enterNewUserEmail(config.getNewUserEmail())
                 .enterNewUserName(config.getNewUserName())
                 .clickSignupButton();
-        new SignupPage()
-                .checkSignupFormTitle()
+        signupPage.checkSignupFormTitle()
                 .selectMaleGender()
                 .enterNewUserName(config.getNewUserName())
                 .enterNewUserPassword(config.getNewUserPassword())
@@ -57,35 +53,28 @@ public class AutomationExerciseTest {
                 .enterZipCode(config.getNewUserZipCode())
                 .enterMobileNumber(config.getNewUserMobileNumber())
                 .clickCreateAccountButton();
-        new AccountCreatedPage()
-                .verifyAccountCreatedTitle()
+        accountCreatedPage.verifyAccountCreatedTitle()
                 .clickContinueButton();
-        new HomePage()
-                .checkLoggedUser(config.getNewUserName())
+        homePage.checkLoggedUser(config.getNewUserName())
                 .clickLogoutButton();
     }
 
     @Test(priority = 2)
     public void LoginUserWithCorrectEmailAndPassword() {
-        new HomePage()
-                .clickLoginButton();
-        new LoginPage()
-                .checkSignInTitle()
+        homePage.clickLoginButton();
+        loginPage.checkSignInTitle()
                 .enterLoginEmail(config.getNewUserEmail())
                 .enterLoginPassword(config.getNewUserPassword())
                 .clickLoginButton();
-        new HomePage()
-                .checkLoggedUser(config.getNewUserName())
+        homePage.checkLoggedUser(config.getNewUserName())
                 .clickDeleteAccountButton()
                 .checkAccountDeletedMessage();
     }
 
     @Test(priority = 3)
     public void LoginUserWithIncorrectEmailAndPassword() {
-        new HomePage()
-                .clickLoginButton();
-        new LoginPage()
-                .checkSignInTitle()
+        homePage.clickLoginButton();
+        loginPage.checkSignInTitle()
                 .enterLoginEmail(config.getInvalidUserEmail())
                 .enterLoginPassword(config.getInvalidUserPassword())
                 .clickLoginButton()
@@ -94,26 +83,20 @@ public class AutomationExerciseTest {
 
     @Test(priority = 4)
     public void LogoutUser() {
-        new HomePage()
-                .clickLoginButton();
-        new LoginPage()
-                .checkSignInTitle()
+        homePage.clickLoginButton();
+        loginPage.checkSignInTitle()
                 .enterLoginEmail(config.getValidUserEmail())
                 .enterLoginPassword(config.getValidUserPassword())
                 .clickLoginButton();
-        new HomePage()
-                .checkLoggedUser(config.getValidUserName())
+        homePage.checkLoggedUser(config.getValidUserName())
                 .clickLogoutButton();
-        new LoginPage()
-                .checkCurrentPage();
+        loginPage.checkCurrentPage();
     }
 
     @Test(priority = 5)
     public void RegisterUserWithExistingEmail() {
-        new HomePage()
-                .clickLoginButton();
-        new LoginPage()
-                .checkSignupFormTitle()
+        homePage.clickLoginButton();
+        loginPage.checkSignupFormTitle()
                 .enterNewUserEmail(config.getValidUserEmail())
                 .enterNewUserName(config.getValidUserName())
                 .clickSignupButton()
@@ -122,10 +105,8 @@ public class AutomationExerciseTest {
 
     @Test(priority = 6)
     public void ContactUsForm() {
-        new HomePage()
-                .clickContactUsButton();
-        new ContactUsPage()
-                .checkGetInTouchTitle()
+        homePage.clickContactUsButton();
+        contactUsPage.checkGetInTouchTitle()
                 .enterName(config.getContactUserName())
                 .enterEmail(config.getContactUserEmail())
                 .enterSubject(config.getContactUserSubject())
@@ -135,24 +116,19 @@ public class AutomationExerciseTest {
                 .OkAlert()
                 .isVisibleAlertStatusMessage()
                 .clickHomeButton();
-        new HomePage()
-                .checkCurrentPage();
+        homePage.checkCurrentPage();
     }
 
     @Test(priority = 7)
     public void VerifyTestCasesPage() {
-        new HomePage()
-                .clickTestCasesButton();
-        new TestCasesPage()
-                .checkTitle();
+        homePage.clickTestCasesButton();
+        testCasesPage.checkTitle();
     }
 
     @Test(priority = 8)
     public void VerifyAllProductsAndProductDetailPage() {
-        new HomePage()
-                .clickProductsButton();
-        new ProductsPage()
-                .checkTitle()
+        homePage.clickProductsButton();
+        productsPage.checkTitle()
                 .productsListIsVisible()
                 .clickProductViewButtonByIndex(1)
                 .checkProductDetailsTitle()
@@ -166,10 +142,8 @@ public class AutomationExerciseTest {
 
     @Test(priority = 9)
     public void SearchProduct(){
-        new HomePage()
-                .clickProductsButton();
-        new ProductsPage()
-                .productsListIsVisible()
+        homePage.clickProductsButton();
+        productsPage.productsListIsVisible()
                 .searchProduct("Men Tshirt")
                 .checkSearchedProductsTitle()
                 .checkSearchResultProductName("Men Tshirt");
@@ -177,34 +151,28 @@ public class AutomationExerciseTest {
 
     @Test(priority = 10)
     public void VerifySubscriptionInHomePage(){
-        new HomePage()
-                .checkFooterSubscriptionTitle()
+        homePage.checkFooterSubscriptionTitle()
                 .enterEmailForSubscription(config.getSubscriptionEmail())
                 .checkSubscriptionSuccessMessage();
     }
 
     @Test(priority = 11)
     public  void  VerifySubscriptionInCartPage(){
-        new HomePage()
-                .clickCartButton();
-        new CartPage()
-                .checkFooterSubscriptionTitle()
+        homePage.clickCartButton();
+        cartPage.checkFooterSubscriptionTitle()
                 .enterEmailForSubscription(config.getSubscriptionEmail())
                 .checkSubscriptionSuccessMessage();
     }
 
     @Test(priority = 12)
     public void AddProductsInCart(){
-        new HomePage()
-                .clickProductsButton();
-        new ProductsPage()
-                .productsListIsVisible()
+        homePage.clickProductsButton();
+        productsPage.productsListIsVisible()
                 .addProductByName("Blue Top")
                 .clickContinueShoppingButton()
                 .addProductToCartByIndex(3)
                 .clickViewCartLink();
-        new CartPage()
-                .checkProductInCart("Blue Top")
+        cartPage.checkProductInCart("Blue Top")
                 .checkProductInCart("Men Tshirt");
     }
 }
