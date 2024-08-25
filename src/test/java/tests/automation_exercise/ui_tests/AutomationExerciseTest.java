@@ -35,23 +35,12 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickSignupButton();
         signupPage.checkSignupFormTitle()
                 .selectMaleGender()
-                .enterNewUserName(config.getNewUserName())
-                .enterNewUserPassword(config.getNewUserPassword())
-                .selectDayOfBirth(24)
-                .selectMonthOfBirth("May")
-                .selectYearOfBirth("1990")
+                .fillRegisterForm(config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
+                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
+                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
                 .selectNewsletterSubscription()
                 .selectSpecialOffersSubscription()
-                .enterFirstName(config.getNewUserFirstName())
-                .enterLastName(config.getNewUserLastName())
-                .enterCompanyName(config.getNewUserCompanyName())
-                .enterAddress1(config.getNewUserAddress1())
-                .enterAddress2(config.getNewUserAddress2())
-                .selectCountry(config.getNewUserCountry())
-                .enterState(config.getNewUserState())
-                .enterCity(config.getNewUserCity())
-                .enterZipCode(config.getNewUserZipCode())
-                .enterMobileNumber(config.getNewUserMobileNumber())
                 .clickCreateAccountButton();
         accountCreatedPage.verifyAccountCreatedTitle()
                 .clickContinueButton();

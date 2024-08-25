@@ -4,6 +4,7 @@ import automation_exercise.pages.*;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
+
     protected HomePage homePage;
     protected LoginPage loginPage;
     protected SignupPage signupPage;

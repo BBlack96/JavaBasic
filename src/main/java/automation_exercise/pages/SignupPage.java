@@ -116,4 +116,25 @@ public class SignupPage extends BasePage {
         $(SignupLocators.CREATE_ACCOUNT_BUTTON.getLocator()).click();
         return this;
     }
+
+    public SignupPage fillRegisterForm(String name, String password, int day, String month, String year
+    , String firstName, String lastName, String companyName, String address1, String address2, String country,
+                                       String state, String city, String zipCode, String mobileNumber) {
+        enterNewUserName(name);
+        enterNewUserPassword(password);
+        selectDayOfBirth(day);
+        selectMonthOfBirth(month);
+        selectYearOfBirth(year);
+        enterFirstName(firstName);
+        enterLastName(lastName);
+        enterCompanyName(companyName);
+        enterAddress1(address1);
+        enterAddress2(address2);
+        selectCountry(country);
+        enterState(state);
+        enterCity(city);
+        enterZipCode(zipCode);
+        enterMobileNumber(mobileNumber);
+        return this;
+    }
 }
