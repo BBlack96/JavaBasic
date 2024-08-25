@@ -19,6 +19,8 @@ public enum ProductsLocators {
     CONTINUE_SHOPPING_BUTTON(By.xpath("//button[text()='Continue Shopping']")),
     VIEW_CART_LINK(By.xpath("//div[@id='cartModal']//a")),
     PRODUCT_LINK(By.xpath("//div[contains(@class, 'productinfo')]/p[text()='%s']/../a")),
+    PRODUCT_QUANTITY(By.id("quantity")),
+    ADD_TO_CART_BUTTON(By.xpath("//div[@class='product-information']//button")),
     ;
 
     private final By locator;

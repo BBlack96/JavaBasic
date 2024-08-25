@@ -7,8 +7,21 @@ public enum CartLocators {
     SUBSCRIBE_EMAIL_INPUT(By.id("susbscribe_email")),
     SUBSCRIBE_BUTTON(By.id("subscribe")),
     SUCCESS_SUBSCRIPTION_MESSAGE(By.id("success-subscribe")),
-    PRODUCT_IN_CART(By.xpath("//tbody/tr")),
     PRODUCT_NAME_IN_CART(By.xpath("//tbody/tr//a[text()='%s']")),
+    PROCEED_TO_CHECKOUT_BUTTON(By.xpath("//a[text()='Proceed To Checkout']")),
+    REGISTER_LOGIN_LINK(By.xpath("//div[@id='checkoutModal']//a[@href='/login']")),
+    PRODUCT_QUANTITY_IN_CART(By.xpath("//tbody/tr//a[text()='%s']/../../../td[@class='cart_quantity']/button")),
+    ADDRESS_DETAILS_TITLE(By.xpath("//h2[text()='Address Details']")),
+    REVIEW_ORDER_TITLE(By.xpath("//h2[text()='Review Your Order']")),
+    ORDER_MESSAGE(By.xpath("//div[@id='ordermsg']/textarea")),
+    PLACE_ORDER_BUTTON(By.xpath("//a[@href='/payment']")),
+    NAME_ON_CARD_INPUT(By.name("name_on_card")),
+    CARD_NUMBER_INPUT(By.name("card_number")),
+    CVC_INPUT(By.name("cvc")),
+    EXPIRY_MONTH_INPUT(By.name("expiry_month")),
+    EXPIRY_YEAR_INPUT(By.name("expiry_year")),
+    CONFIRM_ORDER_BUTTON(By.id("submit")),
+    ORDER_PLACED_MESSAGE(By.xpath("//b[text()='Order Placed!']"))
     ;
 
     private final By locator;

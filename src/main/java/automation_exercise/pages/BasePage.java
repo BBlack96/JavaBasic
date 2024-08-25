@@ -9,7 +9,7 @@ import java.io.File;
 public class BasePage {
     static {
         ChromeOptions options = new ChromeOptions();
-        options.addExtensions(new File("src/main/java/automation_exercise/utils/AdblockPlus.crx"));
+        options.addExtensions(new File("src/main/java/automation_exercise/utils/AdBlock.crx"));
         Configuration.browserCapabilities = options;
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;

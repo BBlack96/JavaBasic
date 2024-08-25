@@ -106,6 +106,26 @@ public class EnvConfig {
     }
 
 
+    public String getCardName() {
+        return dotenv.get("CARD_NAME");
+    }
+
+
+    public String getCardNumber() {
+        return dotenv.get("CARD_NUMBER");
+    }
+
+    public String getCardCVC() {
+        return dotenv.get("CARD_CVC");
+    }
+
+    public String getCardExpiryMonth() {
+        return dotenv.get("CARD_EXPIRY_MONTH");
+    }
+
+    public String getCardExpiryYear() {
+        return dotenv.get("CARD_EXPIRY_YEAR");
+    }
 }
 
 

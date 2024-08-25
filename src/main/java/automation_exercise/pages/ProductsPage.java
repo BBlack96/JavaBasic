@@ -102,6 +102,17 @@ public class ProductsPage extends BasePage {
         return this;
     }
 
+    public ProductsPage setProductQuantity(int quantity) {
+        $(ProductsLocators.PRODUCT_QUANTITY.getLocator()).clear();
+        $(ProductsLocators.PRODUCT_QUANTITY.getLocator()).setValue(String.valueOf(quantity));
+        return this;
+    }
+
+    public ProductsPage addProductToCart() {
+        $(ProductsLocators.ADD_TO_CART_BUTTON.getLocator()).click();
+        return this;
+    }
+
 
 
 

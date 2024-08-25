@@ -31,4 +31,58 @@ public class CartPage extends BasePage {
         return this;
     }
 
+    public CartPage checkProductQuantityInCart(String productName, String quantity) {
+        checkText(CartLocators.PRODUCT_QUANTITY_IN_CART.getLocator(productName), quantity);
+        return this;
+    }
+
+    public CartPage clickProceedToCheckoutButton() {
+        $(CartLocators.PROCEED_TO_CHECKOUT_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public CartPage clickRegisterLoginLink() {
+        $(CartLocators.REGISTER_LOGIN_LINK.getLocator()).click();
+        return this;
+    }
+    public CartPage verifyAddressDetailsTitle() {
+        isVisible(CartLocators.ADDRESS_DETAILS_TITLE.getLocator());
+        return this;
+    }
+
+    public CartPage verifyReviewOrderTitle() {
+        isVisible(CartLocators.REVIEW_ORDER_TITLE.getLocator());
+        return this;
+    }
+
+    public CartPage setOrderMessage(String message) {
+        $(CartLocators.ORDER_MESSAGE.getLocator()).setValue(message);
+        return this;
+    }
+
+    public CartPage clickPlaceOrderButton() {
+        $(CartLocators.PLACE_ORDER_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public CartPage enterPaymentDetails(String nameOnCard, String cardNumber, String cvc, String expiryMonth, String expiryYear) {
+        $(CartLocators.NAME_ON_CARD_INPUT.getLocator()).setValue(nameOnCard);
+        $(CartLocators.CARD_NUMBER_INPUT.getLocator()).setValue(cardNumber);
+        $(CartLocators.CVC_INPUT.getLocator()).setValue(cvc);
+        $(CartLocators.EXPIRY_MONTH_INPUT.getLocator()).setValue(expiryMonth);
+        $(CartLocators.EXPIRY_YEAR_INPUT.getLocator()).setValue(expiryYear);
+        return this;
+    }
+
+    public CartPage clickConfirmOrderButton() {
+        $(CartLocators.CONFIRM_ORDER_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public CartPage checkOrderPlacedMessage() {
+        isVisible(CartLocators.ORDER_PLACED_MESSAGE.getLocator());
+        return this;
+    }
+
+
 }

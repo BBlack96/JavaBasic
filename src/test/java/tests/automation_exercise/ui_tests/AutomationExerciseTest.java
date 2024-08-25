@@ -1,4 +1,3 @@
-// AutomationExerciseTest.java
 package tests.automation_exercise.ui_tests;
 
 import automation_exercise.pages.BasePage;
@@ -14,7 +13,7 @@ public class AutomationExerciseTest extends BaseTest {
         BasePage basePage = new BasePage();
         basePage.open("chrome://extensions/");
         try {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -27,13 +26,15 @@ public class AutomationExerciseTest extends BaseTest {
     }
 
     @Test(priority = 1)
-    public void RegisterUser() {
+    public void registerUser() {
         homePage.clickLoginButton();
-        loginPage.checkSignupFormTitle()
+        loginPage
+                .checkSignupFormTitle()
                 .enterNewUserEmail(config.getNewUserEmail())
                 .enterNewUserName(config.getNewUserName())
                 .clickSignupButton();
-        signupPage.checkSignupFormTitle()
+        signupPage
+                .checkSignupFormTitle()
                 .selectMaleGender()
                 .fillRegisterForm(config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
                         config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
@@ -42,28 +43,33 @@ public class AutomationExerciseTest extends BaseTest {
                 .selectNewsletterSubscription()
                 .selectSpecialOffersSubscription()
                 .clickCreateAccountButton();
-        accountCreatedPage.verifyAccountCreatedTitle()
+        accountCreatedPage
+                .verifyAccountCreatedTitle()
                 .clickContinueButton();
-        homePage.checkLoggedUser(config.getNewUserName())
+        homePage
+                .checkLoggedUser(config.getNewUserName())
                 .clickLogoutButton();
     }
 
     @Test(priority = 2)
-    public void LoginUserWithCorrectEmailAndPassword() {
+    public void loginUserWithCorrectEmailAndPassword() {
         homePage.clickLoginButton();
-        loginPage.checkSignInTitle()
+        loginPage
+                .checkSignInTitle()
                 .enterLoginEmail(config.getNewUserEmail())
                 .enterLoginPassword(config.getNewUserPassword())
                 .clickLoginButton();
-        homePage.checkLoggedUser(config.getNewUserName())
+        homePage
+                .checkLoggedUser(config.getNewUserName())
                 .clickDeleteAccountButton()
                 .checkAccountDeletedMessage();
     }
 
     @Test(priority = 3)
-    public void LoginUserWithIncorrectEmailAndPassword() {
+    public void loginUserWithIncorrectEmailAndPassword() {
         homePage.clickLoginButton();
-        loginPage.checkSignInTitle()
+        loginPage
+                .checkSignInTitle()
                 .enterLoginEmail(config.getInvalidUserEmail())
                 .enterLoginPassword(config.getInvalidUserPassword())
                 .clickLoginButton()
@@ -71,21 +77,24 @@ public class AutomationExerciseTest extends BaseTest {
     }
 
     @Test(priority = 4)
-    public void LogoutUser() {
+    public void logoutUser() {
         homePage.clickLoginButton();
-        loginPage.checkSignInTitle()
+        loginPage
+                .checkSignInTitle()
                 .enterLoginEmail(config.getValidUserEmail())
                 .enterLoginPassword(config.getValidUserPassword())
                 .clickLoginButton();
-        homePage.checkLoggedUser(config.getValidUserName())
+        homePage
+                .checkLoggedUser(config.getValidUserName())
                 .clickLogoutButton();
         loginPage.checkCurrentPage();
     }
 
     @Test(priority = 5)
-    public void RegisterUserWithExistingEmail() {
+    public void registerUserWithExistingEmail() {
         homePage.clickLoginButton();
-        loginPage.checkSignupFormTitle()
+        loginPage
+                .checkSignupFormTitle()
                 .enterNewUserEmail(config.getValidUserEmail())
                 .enterNewUserName(config.getValidUserName())
                 .clickSignupButton()
@@ -93,9 +102,10 @@ public class AutomationExerciseTest extends BaseTest {
     }
 
     @Test(priority = 6)
-    public void ContactUsForm() {
+    public void contactUsForm() {
         homePage.clickContactUsButton();
-        contactUsPage.checkGetInTouchTitle()
+        contactUsPage
+                .checkGetInTouchTitle()
                 .enterName(config.getContactUserName())
                 .enterEmail(config.getContactUserEmail())
                 .enterSubject(config.getContactUserSubject())
@@ -109,15 +119,16 @@ public class AutomationExerciseTest extends BaseTest {
     }
 
     @Test(priority = 7)
-    public void VerifyTestCasesPage() {
+    public void verifyTestCasesPage() {
         homePage.clickTestCasesButton();
         testCasesPage.checkTitle();
     }
 
     @Test(priority = 8)
-    public void VerifyAllProductsAndProductDetailPage() {
+    public void verifyAllProductsAndProductDetailPage() {
         homePage.clickProductsButton();
-        productsPage.checkTitle()
+        productsPage
+                .checkTitle()
                 .productsListIsVisible()
                 .clickProductViewButtonByIndex(1)
                 .checkProductDetailsTitle()
@@ -130,38 +141,136 @@ public class AutomationExerciseTest extends BaseTest {
     }
 
     @Test(priority = 9)
-    public void SearchProduct(){
+    public void searchProduct() {
         homePage.clickProductsButton();
-        productsPage.productsListIsVisible()
+        productsPage
+                .productsListIsVisible()
                 .searchProduct("Men Tshirt")
                 .checkSearchedProductsTitle()
                 .checkSearchResultProductName("Men Tshirt");
     }
 
     @Test(priority = 10)
-    public void VerifySubscriptionInHomePage(){
+    public void verifySubscriptionInHomePage() {
         homePage.checkFooterSubscriptionTitle()
                 .enterEmailForSubscription(config.getSubscriptionEmail())
                 .checkSubscriptionSuccessMessage();
     }
 
     @Test(priority = 11)
-    public  void  VerifySubscriptionInCartPage(){
+    public void verifySubscriptionInCartPage() {
         homePage.clickCartButton();
-        cartPage.checkFooterSubscriptionTitle()
+        cartPage
+                .checkFooterSubscriptionTitle()
                 .enterEmailForSubscription(config.getSubscriptionEmail())
                 .checkSubscriptionSuccessMessage();
     }
 
     @Test(priority = 12)
-    public void AddProductsInCart(){
+    public void addProductsInCart() {
         homePage.clickProductsButton();
-        productsPage.productsListIsVisible()
+        productsPage
+                .productsListIsVisible()
                 .addProductByName("Blue Top")
                 .clickContinueShoppingButton()
                 .addProductToCartByIndex(3)
                 .clickViewCartLink();
-        cartPage.checkProductInCart("Blue Top")
+        cartPage
+                .checkProductInCart("Blue Top")
                 .checkProductInCart("Men Tshirt");
+    }
+
+    @Test(priority = 13)
+    public void verifyProductQuantityInCart() {
+        productsPage
+                .clickProductViewButtonByIndex(1)
+                .checkProductDetailsTitle()
+                .setProductQuantity(4)
+                .addProductToCart()
+                .clickViewCartLink();
+        cartPage
+                .checkProductInCart("Blue Top")
+                .checkProductQuantityInCart("Blue Top", "5");
+    }
+
+    @Test(priority = 14)
+    public void placeOrderRegisterWhileCheckout() {
+        productsPage
+                .addProductByName("Blue Top")
+                .clickContinueShoppingButton()
+                .addProductByName("Men Tshirt")
+                .clickViewCartLink();
+        cartPage
+                .clickProceedToCheckoutButton()
+                .clickRegisterLoginLink();
+        loginPage
+                .enterNewUserEmail(config.getNewUserEmail())
+                .enterNewUserName(config.getNewUserName())
+                .clickSignupButton();
+        signupPage
+                .selectMaleGender()
+                .fillRegisterForm(config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
+                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
+                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .clickCreateAccountButton();
+        accountCreatedPage
+                .verifyAccountCreatedTitle()
+                .clickContinueButton();
+        homePage
+                .checkLoggedUser(config.getNewUserName())
+                .clickCartButton();
+        cartPage
+                .clickProceedToCheckoutButton()
+                .verifyAddressDetailsTitle()
+                .verifyReviewOrderTitle()
+                .setOrderMessage("Test Message")
+                .clickPlaceOrderButton()
+                .enterPaymentDetails(config.getCardName(), config.getCardNumber(), config.getCardCVC(),
+                        config.getCardExpiryMonth(), config.getCardExpiryYear())
+                .clickConfirmOrderButton()
+                .checkOrderPlacedMessage();
+        homePage
+                .clickDeleteAccountButton()
+                .checkAccountDeletedMessage();
+    }
+
+    @Test(priority = 15)
+    public void placeOrderRegisterBeforeCheckout() {
+        homePage.clickLoginButton();
+        loginPage
+                .enterNewUserEmail(config.getNewUserEmail())
+                .enterNewUserName(config.getNewUserName())
+                .clickSignupButton();
+        signupPage
+                .selectMaleGender()
+                .fillRegisterForm(config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
+                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
+                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .clickCreateAccountButton();
+        accountCreatedPage
+                .verifyAccountCreatedTitle()
+                .clickContinueButton();
+        homePage
+                .checkLoggedUser(config.getNewUserName());
+        productsPage
+                .addProductByName("Blue Top")
+                .addProductByName("Men Tshirt")
+                .clickViewCartLink();
+        cartPage
+                .clickProceedToCheckoutButton()
+                .verifyAddressDetailsTitle()
+                .verifyReviewOrderTitle()
+                .setOrderMessage("Test Message")
+                .clickPlaceOrderButton()
+                .enterPaymentDetails(config.getCardName(), config.getCardNumber(), config.getCardCVC(),
+                        config.getCardExpiryMonth(), config.getCardExpiryYear())
+                .clickConfirmOrderButton()
+                .checkOrderPlacedMessage();
+        homePage
+                .clickDeleteAccountButton()
+                .checkAccountDeletedMessage();
+
     }
 }
