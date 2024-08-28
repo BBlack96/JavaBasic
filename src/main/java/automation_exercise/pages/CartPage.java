@@ -15,9 +15,19 @@ public class CartPage extends BasePage {
         return this;
     }
 
+    public CartPage deleteProductFromCart(String productName) {
+        $(CartLocators.DELETE_PRODUCT_BUTTON.getLocator(productName)).click();
+        return this;
+    }
+
     public CartPage enterEmailForSubscription(String email) {
         $(CartLocators.SUBSCRIBE_EMAIL_INPUT.getLocator()).setValue(email);
         $(CartLocators.SUBSCRIBE_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public CartPage checkProductIsDeletedFromCart(String productName) {
+        isNotVisible(CartLocators.PRODUCT_NAME_IN_CART.getLocator(productName));
         return this;
     }
 

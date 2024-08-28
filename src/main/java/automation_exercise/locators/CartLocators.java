@@ -21,7 +21,8 @@ public enum CartLocators {
     EXPIRY_MONTH_INPUT(By.name("expiry_month")),
     EXPIRY_YEAR_INPUT(By.name("expiry_year")),
     CONFIRM_ORDER_BUTTON(By.id("submit")),
-    ORDER_PLACED_MESSAGE(By.xpath("//b[text()='Order Placed!']"))
+    ORDER_PLACED_MESSAGE(By.xpath("//b[text()='Order Placed!']")),
+    DELETE_PRODUCT_BUTTON(By.xpath("//tbody/tr//a[text()='%s']/../../../td[@class='cart_delete']/a"))
     ;
 
     private final By locator;

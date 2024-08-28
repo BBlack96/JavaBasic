@@ -51,7 +51,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage checkCurrentPage(){
+    public HomePage checkCurrentPage() {
         checkPageTitle("Automation Exercise");
         return this;
     }
@@ -74,6 +74,41 @@ public class HomePage extends BasePage {
 
     public HomePage checkSubscriptionSuccessMessage() {
         checkText(HomeLocators.SUCCESS_SUBSCRIPTION_MESSAGE.getLocator(), "You have been successfully subscribed!");
+        return this;
+    }
+
+    public HomePage checkProductsCategoryList() {
+        isVisible(HomeLocators.PRODUCTS_CATEGORY_LIST.getLocator());
+        return this;
+    }
+
+    public HomePage clickWomenCategory() {
+        $(HomeLocators.WOMEN_CATEGORY.getLocator()).click();
+        return this;
+    }
+
+    public HomePage clickDressWomenSubcategory() {
+        $(HomeLocators.DRESS_WOMEN_SUBCATEGORY.getLocator()).click();
+        return this;
+    }
+
+    public HomePage checkDressSubcategoryTitle() {
+        isVisible(HomeLocators.DRESS_SUBCATEGORY_TITLE.getLocator());
+        return this;
+    }
+
+    public HomePage clickMenCategory() {
+        $(HomeLocators.MEN_CATEGORY.getLocator()).click();
+        return this;
+    }
+
+    public HomePage clickTshirtsMenSubcategory() {
+        $(HomeLocators.TSHIRTS_MEN_SUBCATEGORY.getLocator()).click();
+        return this;
+    }
+
+    public HomePage checkMenTshirtsSubcategoryTitle() {
+        isVisible(HomeLocators.MEN_TSHIRTS_SUBCATEGORY_TITLE.getLocator());
         return this;
     }
 }

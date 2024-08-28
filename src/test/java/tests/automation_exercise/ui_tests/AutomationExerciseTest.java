@@ -273,4 +273,60 @@ public class AutomationExerciseTest extends BaseTest {
                 .checkAccountDeletedMessage();
 
     }
+
+    @Test(priority = 16)
+    public void PlaceOrderLoginBeforeCheckout(){
+        homePage.clickLoginButton();
+        loginPage
+                .enterLoginEmail(config.getValidUserEmail())
+                .enterLoginPassword(config.getValidUserPassword())
+                .clickLoginButton();
+        homePage.checkLoggedUser(config.getValidUserName());
+        productsPage
+                .addProductByName("Blue Top")
+                .addProductByName("Men Tshirt")
+                .clickViewCartLink();
+        cartPage
+                .checkProductInCart("Blue Top")
+                .checkProductInCart("Men Tshirt")
+                .clickProceedToCheckoutButton()
+                .verifyAddressDetailsTitle()
+                .verifyReviewOrderTitle()
+                .setOrderMessage("Test Message")
+                .clickPlaceOrderButton()
+                .enterPaymentDetails(config.getCardName(), config.getCardNumber(), config.getCardCVC(),
+                        config.getCardExpiryMonth(), config.getCardExpiryYear())
+                .clickConfirmOrderButton()
+                .checkOrderPlacedMessage();
+    }
+
+    @Test(priority = 17)
+    public void RemoveProductsFromCart(){
+        productsPage
+                .addProductByName("Blue Top")
+                .clickContinueShoppingButton()
+                .addProductByName("Men Tshirt")
+                .clickViewCartLink();
+        cartPage
+                .checkProductInCart("Blue Top")
+                .checkProductInCart("Men Tshirt")
+                .deleteProductFromCart("Blue Top")
+                .checkProductIsDeletedFromCart("Blue Top")
+                .deleteProductFromCart("Men Tshirt")
+                .checkProductIsDeletedFromCart("Men Tshirt");
+    }
+
+    @Test(priority = 18)
+    public void ViewCategoryProducts(){
+        homePage
+                .checkProductsCategoryList()
+                .checkProductsCategoryList()
+                .clickWomenCategory()
+                .clickDressWomenSubcategory()
+                .checkDressSubcategoryTitle()
+                .clickMenCategory()
+                .clickTshirtsMenSubcategory()
+                .checkMenTshirtsSubcategoryTitle()
+        ;
+    }
 }
