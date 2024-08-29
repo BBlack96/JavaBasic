@@ -13,6 +13,7 @@ public class BasePage {
         ChromeOptions options = new ChromeOptions();
         options.addExtensions(new File("src/main/java/automation_exercise/utils/AdBlock.crx"));
         Configuration.browserCapabilities = options;
+        Configuration.downloadsFolder = "src/main/java/automation_exercise/downloads";
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
 

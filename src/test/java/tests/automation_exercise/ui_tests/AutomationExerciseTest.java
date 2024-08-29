@@ -37,8 +37,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickSignupButton();
         signupPage
                 .checkSignupFormTitle()
-                .selectMaleGender()
-                .fillRegisterForm(config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
+                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
                         config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
                         config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
                         config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
@@ -210,8 +209,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .enterNewUserName(config.getNewUserName())
                 .clickSignupButton();
         signupPage
-                .selectMaleGender()
-                .fillRegisterForm(config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
+                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
                         config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
                         config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
                         config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
@@ -245,8 +243,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .enterNewUserName(config.getNewUserName())
                 .clickSignupButton();
         signupPage
-                .selectMaleGender()
-                .fillRegisterForm(config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
+                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
                         config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
                         config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
                         config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
@@ -383,5 +380,76 @@ public class AutomationExerciseTest extends BaseTest {
                 .addRecommendedProductsToCart()
                 .clickCartButton();
         cartPage.checkProductsInCart(recommendedItems);
+    }
+
+    @Test(priority = 23)
+    public void VerifyAddressDetailsInCheckoutPage(){
+        homePage.clickLoginButton();
+        loginPage
+                .checkSignupFormTitle()
+                .enterNewUserEmail(config.getNewUserEmail())
+                .enterNewUserName(config.getNewUserName())
+                .clickSignupButton();
+        signupPage
+                .checkSignupFormTitle()
+                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
+                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
+                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .selectNewsletterSubscription()
+                .selectSpecialOffersSubscription()
+                .clickCreateAccountButton();
+        accountCreatedPage
+                .verifyAccountCreatedTitle()
+                .clickContinueButton();
+        homePage
+                .checkLoggedUser(config.getNewUserName())
+                .addRecommendedProductsToCart()
+                .clickCartButton();
+        cartPage
+                .clickProceedToCheckoutButton()
+                .verifyDeliveryAddress(config.getNewUserMaleGender() + " " + config.getNewUserName())
+                .verifyBillingAddress(config.getNewUserMaleGender() + " " + config.getNewUserName());
+        homePage
+                .clickDeleteAccountButton()
+                .checkAccountDeletedMessage();
+    }
+
+    @Test(priority = 24)
+    public void DownloadInvoiceAfterPurchaseOrder(){
+        homePage.clickLoginButton();
+        loginPage
+                .checkSignupFormTitle()
+                .enterNewUserEmail(config.getNewUserEmail())
+                .enterNewUserName(config.getNewUserName())
+                .clickSignupButton();
+        signupPage
+                .checkSignupFormTitle()
+                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
+                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
+                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .selectNewsletterSubscription()
+                .selectSpecialOffersSubscription()
+                .clickCreateAccountButton();
+        accountCreatedPage
+                .verifyAccountCreatedTitle()
+                .clickContinueButton();
+        homePage
+                .checkLoggedUser(config.getNewUserName())
+                .addRecommendedProductsToCart()
+                .clickCartButton();
+        cartPage
+                .clickProceedToCheckoutButton()
+                .clickPlaceOrderButton()
+                .enterPaymentDetails(config.getCardName(), config.getCardNumber(), config.getCardCVC(),
+                        config.getCardExpiryMonth(), config.getCardExpiryYear())
+                .clickConfirmOrderButton()
+                .checkOrderPlacedMessage()
+                .downloadAndCheckInvoice();
+        homePage
+                .clickDeleteAccountButton()
+                .checkAccountDeletedMessage();
+
     }
 }

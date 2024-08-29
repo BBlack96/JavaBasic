@@ -24,6 +24,9 @@ public enum CartLocators {
     ORDER_PLACED_MESSAGE(By.xpath("//b[text()='Order Placed!']")),
     DELETE_PRODUCT_BUTTON(By.xpath("//tbody/tr//a[text()='%s']/../../../td[@class='cart_delete']/a")),
     PRODUCTS_NAMES_IN_CART(By.xpath("//tr//td[@class='cart_description']//a[contains(text(), '%s')]")),
+    DELIVERY_DESTINATION_TITLE(By.xpath("//ul[@id='address_delivery']/li[contains(@class, 'firstname') " +
+            "and contains(@class, 'lastname')]")),
+    DOWNLOAD_INVOICE_LINK(By.xpath("//a[text()='Download Invoice']")),
     ;
 
     private final By locator;

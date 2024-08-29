@@ -117,9 +117,14 @@ public class SignupPage extends BasePage {
         return this;
     }
 
-    public SignupPage fillRegisterForm(String name, String password, int day, String month, String year
+    public SignupPage fillRegisterForm(String gender, String name, String password, int day, String month, String year
     , String firstName, String lastName, String companyName, String address1, String address2, String country,
                                        String state, String city, String zipCode, String mobileNumber) {
+        if(gender.equals("Mr.")){
+            selectMaleGender();
+        } else {
+            selectFemaleGender();
+        }
         enterNewUserName(name);
         enterNewUserPassword(password);
         selectDayOfBirth(day);

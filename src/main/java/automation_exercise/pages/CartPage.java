@@ -2,6 +2,7 @@ package automation_exercise.pages;
 
 import automation_exercise.locators.CartLocators;
 
+import java.io.File;
 import java.util.List;
 
 public class CartPage extends BasePage {
@@ -105,6 +106,22 @@ public class CartPage extends BasePage {
         for (String product : productNames) {
             isVisible(CartLocators.PRODUCT_NAME_IN_CART.getLocator(product));
         }
+        return this;
+    }
+
+    public CartPage verifyDeliveryAddress(String name){
+        checkText(CartLocators.DELIVERY_DESTINATION_TITLE.getLocator(), name);
+        return this;
+    }
+
+    public CartPage verifyBillingAddress(String name){
+        checkText(CartLocators.DELIVERY_DESTINATION_TITLE.getLocator(), name);
+        return this;
+    }
+
+
+    public CartPage downloadAndCheckInvoice() {
+        $(CartLocators.DOWNLOAD_INVOICE_LINK.getLocator()).click();
         return this;
     }
 

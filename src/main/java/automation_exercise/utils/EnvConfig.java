@@ -37,6 +37,14 @@ public class EnvConfig {
         return dotenv.get("NEW_USER_NAME");
     }
 
+    public String getNewUserMaleGender() {
+        return dotenv.get("NEW_USER_MALE_GENDER");
+    }
+
+    public String getNewUserFemaleGender() {
+        return dotenv.get("NEW_USER_FEMALE_GENDER");
+    }
+
     public String getNewUserPassword() {
         return dotenv.get("NEW_USER_PASSWORD");
     }
