@@ -338,7 +338,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .productsListIsVisible()
                 .clickHimBrand()
                 .productsListIsVisible();
-
+        homePage.clickLogoutButton();
     }
 
     @Test(priority = 20)
@@ -358,7 +358,6 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickLoginButton();
         homePage.clickCartButton();
         cartPage.checkProductsInCart("Top");
-
     }
 
     @Test(priority = 21)
@@ -380,6 +379,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .addRecommendedProductsToCart()
                 .clickCartButton();
         cartPage.checkProductsInCart(recommendedItems);
+        homePage.clickLogoutButton();
     }
 
     @Test(priority = 23)

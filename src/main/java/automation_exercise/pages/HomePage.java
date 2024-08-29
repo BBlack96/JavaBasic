@@ -3,6 +3,7 @@ package automation_exercise.pages;
 import automation_exercise.locators.HomeLocators;
 import automation_exercise.locators.CommonLocators;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.NoSuchElementException;
 
 import java.util.List;
 
@@ -31,7 +32,12 @@ public class HomePage extends BasePage {
     }
 
     public HomePage clickLoginButton() {
-        $(HomeLocators.LOGIN_BUTTON.getLocator()).click();
+        try {
+            $(HomeLocators.LOGIN_BUTTON.getLocator()).click();
+        } catch (NoSuchElementException e) {
+            $(HomeLocators.LOGOUT_BUTTON.getLocator()).click();
+            $(HomeLocators.LOGIN_BUTTON.getLocator()).click();
+        }
         return this;
     }
 
