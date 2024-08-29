@@ -126,6 +126,10 @@ public class EnvConfig {
     public String getCardExpiryYear() {
         return dotenv.get("CARD_EXPIRY_YEAR");
     }
+
+    public String getReviewMessage() {
+        return dotenv.get("REVIEW_MESSAGE");
+    }
 }
 
 

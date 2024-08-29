@@ -2,6 +2,8 @@ package automation_exercise.pages;
 
 import automation_exercise.locators.CartLocators;
 
+import java.util.List;
+
 public class CartPage extends BasePage {
 
     private final String pageUrl = "https://www.automationexercise.com/view_cart";
@@ -91,6 +93,18 @@ public class CartPage extends BasePage {
 
     public CartPage checkOrderPlacedMessage() {
         isVisible(CartLocators.ORDER_PLACED_MESSAGE.getLocator());
+        return this;
+    }
+
+    public CartPage checkProductsInCart(String productName) {
+        areVisible(CartLocators.PRODUCTS_NAMES_IN_CART.getLocator(productName));
+        return this;
+    }
+
+    public CartPage checkProductsInCart(List<String> productNames) {
+        for (String product : productNames) {
+            isVisible(CartLocators.PRODUCT_NAME_IN_CART.getLocator(product));
+        }
         return this;
     }
 

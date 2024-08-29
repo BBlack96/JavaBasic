@@ -1,6 +1,8 @@
 package automation_exercise.pages;
 
 import automation_exercise.locators.ProductsLocators;
+import automation_exercise.locators.CommonLocators;
+import com.codeborne.selenide.SelenideElement;
 
 public class ProductsPage extends BasePage {
 
@@ -22,7 +24,7 @@ public class ProductsPage extends BasePage {
     }
 
     public ProductsPage productsListIsVisible() {
-        isVisible(ProductsLocators.PRODUCTS_LIST.getLocator());
+        isVisible(CommonLocators.PRODUCT_LIST.getLocator());
         return this;
     }
 
@@ -88,31 +90,80 @@ public class ProductsPage extends BasePage {
     }
 
     public ProductsPage clickContinueShoppingButton() {
-        $(ProductsLocators.CONTINUE_SHOPPING_BUTTON.getLocator()).click();
+        $(CommonLocators.CONTINUE_SHOPPING_BUTTON.getLocator()).click();
         return this;
     }
 
     public ProductsPage clickViewCartLink() {
-        $(ProductsLocators.VIEW_CART_LINK.getLocator()).click();
+        $(CommonLocators.VIEW_CART_LINK.getLocator()).click();
         return this;
     }
 
     public ProductsPage addProductByName(String productName) {
-        $(ProductsLocators.PRODUCT_LINK.getLocator(productName)).click();
+        $(CommonLocators.PRODUCT_LINK.getLocator(productName)).click();
         return this;
     }
 
     public ProductsPage setProductQuantity(int quantity) {
-        $(ProductsLocators.PRODUCT_QUANTITY.getLocator()).clear();
-        $(ProductsLocators.PRODUCT_QUANTITY.getLocator()).setValue(String.valueOf(quantity));
+        $(CommonLocators.PRODUCT_QUANTITY.getLocator()).clear();
+        $(CommonLocators.PRODUCT_QUANTITY.getLocator()).setValue(String.valueOf(quantity));
         return this;
     }
 
     public ProductsPage addProductToCart() {
-        $(ProductsLocators.ADD_TO_CART_BUTTON.getLocator()).click();
+        $(CommonLocators.ADD_TO_CART_BUTTON.getLocator()).click();
         return this;
     }
 
+    public ProductsPage checkBrandsIsVisible(){
+        isVisible(CommonLocators.BRANDS_LIST.getLocator());
+        return this;
+    }
+
+    public ProductsPage clickPoloBrand(){
+        $(CommonLocators.POLO_BRAND.getLocator()).click();
+        return this;
+    }
+
+    public ProductsPage clickHimBrand(){
+        $(CommonLocators.HIM_BRAND.getLocator()).click();
+        return this;
+    }
+
+    public ProductsPage areSearchedProductsVisible(String searchRequest){
+        areVisible(ProductsLocators.PRODUCTS_NAMES.getLocator(searchRequest));
+        return this;
+    }
+
+    public ProductsPage addSearchedProductsToCart(){
+        for (SelenideElement selenideElement : $$((CommonLocators.ALL_ADD_TO_CART.getLocator()))) {
+            selenideElement.click();
+            clickContinueShoppingButton();
+        }
+        return this;
+    }
+
+    public ProductsPage checkWriteYourReviewTitleOnProductPage() {
+        isVisible(CommonLocators.WRITE_YOUR_REVIEW_TITLE_ON_PRODUCT_PAGE.getLocator());
+        return this;
+    }
+
+    public ProductsPage fillReviewForm(String name, String email, String message) {
+        $(CommonLocators.REVIEW_NAME_INPUT.getLocator()).setValue(name);
+        $(CommonLocators.REVIEW_EMAIL_INPUT.getLocator()).setValue(email);
+        $(CommonLocators.REVIEW_MESSAGE_INPUT.getLocator()).setValue(message);
+        return this;
+    }
+
+    public ProductsPage submitReview() {
+        $(CommonLocators.SUBMIT_REVIEW_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public ProductsPage checkReviewSuccessAlert() {
+        isVisible(CommonLocators.SUCCESS_REVIEW_ALERT.getLocator());
+        return this;
+    }
 
 
 

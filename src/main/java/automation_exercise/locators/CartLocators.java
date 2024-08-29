@@ -22,7 +22,8 @@ public enum CartLocators {
     EXPIRY_YEAR_INPUT(By.name("expiry_year")),
     CONFIRM_ORDER_BUTTON(By.id("submit")),
     ORDER_PLACED_MESSAGE(By.xpath("//b[text()='Order Placed!']")),
-    DELETE_PRODUCT_BUTTON(By.xpath("//tbody/tr//a[text()='%s']/../../../td[@class='cart_delete']/a"))
+    DELETE_PRODUCT_BUTTON(By.xpath("//tbody/tr//a[text()='%s']/../../../td[@class='cart_delete']/a")),
+    PRODUCTS_NAMES_IN_CART(By.xpath("//tr//td[@class='cart_description']//a[contains(text(), '%s')]")),
     ;
 
     private final By locator;

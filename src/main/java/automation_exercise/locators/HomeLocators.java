@@ -17,17 +17,9 @@ public enum HomeLocators {
     SUBSCRIBE_EMAIL_INPUT(By.id("susbscribe_email")),
     SUBSCRIBE_BUTTON(By.id("subscribe")),
     SUCCESS_SUBSCRIPTION_MESSAGE(By.id("success-subscribe")),
-    PRODUCTS_CATEGORY_LIST(By.id("accordian")),
-    WOMEN_CATEGORY(By.xpath("//a[@href='#Women']")),
-    DRESS_WOMEN_SUBCATEGORY(By.xpath("//div[@id='Women']//a[text()='Dress ']")),
-    TOPS_WOMEN_SUBCATEGORY(By.xpath("//div[@id='Women']//a[text()='Tops ']")),
-    SAREE_WOMEN_SUBCATEGORY(By.xpath("//div[@id='Women']//a[text()='Saree ']")),
-    DRESS_SUBCATEGORY_TITLE(By.xpath("//h2[text()='Women - Dress Products']")),
-    MEN_TSHIRTS_SUBCATEGORY_TITLE(By.xpath("//h2[text()='Men - Tshirts Products']")),
-    MEN_CATEGORY(By.xpath("//a[@href='#Men']")),
-    TSHIRTS_MEN_SUBCATEGORY(By.xpath("//div[@id='Men']//a[text()='Tshirts ']")),
-    JEANS_MEN_SUBCATEGORY(By.xpath("//div[@id='Men']//a[text()='Jeans ']")),
-    KIDS_CATEGORY(By.xpath("//a[@href='#Kids']")),
+    RECOMMENDED_PRODUCTS_TITLE(By.xpath("//div[@class='recommended_items']/h2")),
+    RECOMMENDED_PRODUCT_ADD_TO_CART(By.xpath("//div[@id='recommended-item-carousel']//div[@class='item active']//a[text()='Add to cart']")),
+    RECOMMENDED_PRODUCTS_NAMES(By.xpath("//div[@id='recommended-item-carousel']//div[@class='item active']//p")),
     ;
 
     private final By locator;

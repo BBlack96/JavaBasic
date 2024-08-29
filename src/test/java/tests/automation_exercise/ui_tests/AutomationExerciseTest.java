@@ -4,6 +4,8 @@ import automation_exercise.pages.BasePage;
 import automation_exercise.utils.EnvConfig;
 import org.testng.annotations.*;
 
+import java.util.List;
+
 public class AutomationExerciseTest extends BaseTest {
 
     EnvConfig config = new EnvConfig();
@@ -275,7 +277,7 @@ public class AutomationExerciseTest extends BaseTest {
     }
 
     @Test(priority = 16)
-    public void PlaceOrderLoginBeforeCheckout(){
+    public void PlaceOrderLoginBeforeCheckout() {
         homePage.clickLoginButton();
         loginPage
                 .enterLoginEmail(config.getValidUserEmail())
@@ -301,7 +303,7 @@ public class AutomationExerciseTest extends BaseTest {
     }
 
     @Test(priority = 17)
-    public void RemoveProductsFromCart(){
+    public void RemoveProductsFromCart() {
         productsPage
                 .addProductByName("Blue Top")
                 .clickContinueShoppingButton()
@@ -317,7 +319,7 @@ public class AutomationExerciseTest extends BaseTest {
     }
 
     @Test(priority = 18)
-    public void ViewCategoryProducts(){
+    public void ViewCategoryProducts() {
         homePage
                 .checkProductsCategoryList()
                 .checkProductsCategoryList()
@@ -328,5 +330,58 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickTshirtsMenSubcategory()
                 .checkMenTshirtsSubcategoryTitle()
         ;
+    }
+
+    @Test(priority = 19)
+    public void ViewAndCartBrandProducts() {
+        homePage.clickProductsButton();
+        productsPage
+                .checkBrandsIsVisible()
+                .clickPoloBrand()
+                .productsListIsVisible()
+                .clickHimBrand()
+                .productsListIsVisible();
+
+    }
+
+    @Test(priority = 20)
+    public void SearchProductsAndVerifyCartAfterLogin() {
+        homePage.clickProductsButton();
+        productsPage
+                .productsListIsVisible()
+                .searchProduct("Top")
+                .areSearchedProductsVisible("Top")
+                .addSearchedProductsToCart();
+        homePage.clickCartButton();
+        cartPage.checkProductsInCart("Top");
+        homePage.clickLoginButton();
+        loginPage
+                .enterLoginEmail(config.getValidUserEmail())
+                .enterLoginPassword(config.getValidUserPassword())
+                .clickLoginButton();
+        homePage.clickCartButton();
+        cartPage.checkProductsInCart("Top");
+
+    }
+
+    @Test(priority = 21)
+    public void AddReviewOnProduct() {
+        homePage.clickProductsButton();
+        productsPage
+                .clickProductViewButtonByIndex(1)
+                .checkWriteYourReviewTitleOnProductPage()
+                .fillReviewForm(config.getValidUserName(), config.getValidUserEmail(), config.getReviewMessage())
+                .submitReview()
+                .checkReviewSuccessAlert();
+    }
+
+    @Test(priority = 22)
+    public void AddToCartFromRecommendedItems(){
+        homePage.checkRecommendedProductsTitle();
+        List<String> recommendedItems = homePage.getRecommendedItemsText();
+        homePage
+                .addRecommendedProductsToCart()
+                .clickCartButton();
+        cartPage.checkProductsInCart(recommendedItems);
     }
 }

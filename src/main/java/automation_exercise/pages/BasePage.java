@@ -5,6 +5,8 @@ import com.codeborne.selenide.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BasePage {
     static {
@@ -30,6 +32,10 @@ public class BasePage {
 
     public void isVisible(By locator) {
         $(locator).shouldHave(Condition.visible);
+    }
+
+    public void areVisible(By locator) {
+        $$(locator).forEach(element -> element.shouldBe(Condition.visible));
     }
 
     public void isNotVisible(By locator) {
@@ -65,6 +71,12 @@ public class BasePage {
 
     public void acceptAlert(){
         WebDriverRunner.getWebDriver().switchTo().alert().accept();
+    }
+
+    public List<String> getElementsText(By locator) {
+        return $$(locator).stream()
+                .map(SelenideElement::getText)
+                .collect(Collectors.toList());
     }
 
 }

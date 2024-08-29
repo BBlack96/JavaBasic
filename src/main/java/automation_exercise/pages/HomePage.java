@@ -1,6 +1,10 @@
 package automation_exercise.pages;
 
 import automation_exercise.locators.HomeLocators;
+import automation_exercise.locators.CommonLocators;
+import com.codeborne.selenide.SelenideElement;
+
+import java.util.List;
 
 public class HomePage extends BasePage {
 
@@ -78,37 +82,61 @@ public class HomePage extends BasePage {
     }
 
     public HomePage checkProductsCategoryList() {
-        isVisible(HomeLocators.PRODUCTS_CATEGORY_LIST.getLocator());
+        isVisible(CommonLocators.PRODUCTS_CATEGORY_LIST.getLocator());
         return this;
     }
 
     public HomePage clickWomenCategory() {
-        $(HomeLocators.WOMEN_CATEGORY.getLocator()).click();
+        $(CommonLocators.WOMEN_CATEGORY.getLocator()).click();
         return this;
     }
 
     public HomePage clickDressWomenSubcategory() {
-        $(HomeLocators.DRESS_WOMEN_SUBCATEGORY.getLocator()).click();
+        $(CommonLocators.DRESS_WOMEN_SUBCATEGORY.getLocator()).click();
         return this;
     }
 
     public HomePage checkDressSubcategoryTitle() {
-        isVisible(HomeLocators.DRESS_SUBCATEGORY_TITLE.getLocator());
+        isVisible(CommonLocators.DRESS_SUBCATEGORY_TITLE.getLocator());
         return this;
     }
 
     public HomePage clickMenCategory() {
-        $(HomeLocators.MEN_CATEGORY.getLocator()).click();
+        $(CommonLocators.MEN_CATEGORY.getLocator()).click();
         return this;
     }
 
     public HomePage clickTshirtsMenSubcategory() {
-        $(HomeLocators.TSHIRTS_MEN_SUBCATEGORY.getLocator()).click();
+        $(CommonLocators.TSHIRTS_MEN_SUBCATEGORY.getLocator()).click();
         return this;
     }
 
     public HomePage checkMenTshirtsSubcategoryTitle() {
-        isVisible(HomeLocators.MEN_TSHIRTS_SUBCATEGORY_TITLE.getLocator());
+        isVisible(CommonLocators.MEN_TSHIRTS_SUBCATEGORY_TITLE.getLocator());
         return this;
     }
+
+    public HomePage checkRecommendedProductsTitle() {
+        isVisible(HomeLocators.RECOMMENDED_PRODUCTS_TITLE.getLocator());
+        return this;
+    }
+
+    public HomePage clickContinueShoppingButton() {
+        $(CommonLocators.CONTINUE_SHOPPING_BUTTON.getLocator()).click();
+        return this;
+    }
+
+    public HomePage addRecommendedProductsToCart(){
+        for (SelenideElement selenideElement : $$(HomeLocators.RECOMMENDED_PRODUCT_ADD_TO_CART.getLocator())) {
+            selenideElement.click();
+            clickContinueShoppingButton();
+        }
+        return this;
+    }
+
+    public List<String> getRecommendedItemsText() {
+        return getElementsText(HomeLocators.RECOMMENDED_PRODUCTS_NAMES.getLocator());
+    }
+
+
 }
