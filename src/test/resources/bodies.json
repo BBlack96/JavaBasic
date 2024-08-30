@@ -1,0 +1,13 @@
+{
+  "createUser": {
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+  },
+  "updateUser": {
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com"
+  },
+  "searchRequest": {
+    "search_product": "tshirt"
+  }
+}

@@ -1,6 +1,7 @@
 package tests.automation_exercise.api_tests;
 
 import automation_exercise.requests.*;
+import automation_exercise.utils.JsonReader;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseApiRequest {
@@ -13,6 +14,7 @@ public class BaseApiRequest {
     protected SearchProduct searchProduct;
     protected UpdateAccount updateAccount;
     protected VerifyLogin verifyLogin;
+    protected JsonReader jsonReader;
 
     @BeforeMethod
     public void setUpRequests() {
@@ -24,5 +26,6 @@ public class BaseApiRequest {
         searchProduct = new SearchProduct();
         updateAccount = new UpdateAccount();
         verifyLogin = new VerifyLogin();
+        jsonReader = new JsonReader("src/test/resources/bodies.json");
     }
 }
