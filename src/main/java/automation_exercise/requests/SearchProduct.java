@@ -3,7 +3,7 @@ package automation_exercise.requests;
 import automation_exercise.endpoints.ApiEndpoints;
 import io.restassured.response.Response;
 
-public class SearchProduct extends BaseRequest{
+public class SearchProduct extends BaseRequest {
 
     public Response getSearchProduct() {
         return sendGetRequest(ApiEndpoints.SEARCH_PRODUCT.getEndpoint());

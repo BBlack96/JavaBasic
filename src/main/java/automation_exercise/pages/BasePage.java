@@ -1,7 +1,7 @@
 package automation_exercise.pages;
 
-import org.openqa.selenium.By;
 import com.codeborne.selenide.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
@@ -16,7 +16,6 @@ public class BasePage {
         Configuration.downloadsFolder = "src/main/java/automation_exercise/downloads";
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
-
     }
 
     public void open(String url) {
@@ -27,7 +26,7 @@ public class BasePage {
         return Selenide.$(locator);
     }
 
-    public ElementsCollection $$ (By locator) {
+    public ElementsCollection $$(By locator) {
         return Selenide.$$(locator);
     }
 
@@ -70,16 +69,11 @@ public class BasePage {
         Selenide.title().equals(title);
     }
 
-    public void acceptAlert(){
+    public void acceptAlert() {
         WebDriverRunner.getWebDriver().switchTo().alert().accept();
     }
 
     public List<String> getElementsText(By locator) {
-        return $$(locator).stream()
-                .map(SelenideElement::getText)
-                .collect(Collectors.toList());
+        return $$(locator).stream().map(SelenideElement::getText).collect(Collectors.toList());
     }
-
 }
-
-

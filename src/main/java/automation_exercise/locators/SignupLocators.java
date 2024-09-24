@@ -24,8 +24,7 @@ public enum SignupLocators {
     CITY_INPUT(By.id("city")),
     ZIP_CODE_INPUT(By.id("zipcode")),
     MOBILE_NUMBER_INPUT(By.id("mobile_number")),
-    CREATE_ACCOUNT_BUTTON(By.xpath("//button[@data-qa='create-account']"))
-    ;
+    CREATE_ACCOUNT_BUTTON(By.xpath("//button[@data-qa='create-account']"));
 
     private final By locator;
 

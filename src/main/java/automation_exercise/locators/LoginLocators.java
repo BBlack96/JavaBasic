@@ -13,7 +13,6 @@ public enum LoginLocators {
     SING_IN_TITLE(By.xpath("//div[@class='login-form']/h2")),
     WRONG_CREDENTIALS_MESSAGE(By.xpath("//form[@action='/login']/p")),
     EXISTING_CREDS_MESSAGE(By.xpath("//form[@action='/signup']/p")),
-
     ;
 
     private final By locator;

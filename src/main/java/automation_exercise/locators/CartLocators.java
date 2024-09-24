@@ -10,7 +10,8 @@ public enum CartLocators {
     PRODUCT_NAME_IN_CART(By.xpath("//tbody/tr//a[text()='%s']")),
     PROCEED_TO_CHECKOUT_BUTTON(By.xpath("//a[text()='Proceed To Checkout']")),
     REGISTER_LOGIN_LINK(By.xpath("//div[@id='checkoutModal']//a[@href='/login']")),
-    PRODUCT_QUANTITY_IN_CART(By.xpath("//tbody/tr//a[text()='%s']/../../../td[@class='cart_quantity']/button")),
+    PRODUCT_QUANTITY_IN_CART(
+            By.xpath("//tbody/tr//a[text()='%s']/../../../td[@class='cart_quantity']/button")),
     ADDRESS_DETAILS_TITLE(By.xpath("//h2[text()='Address Details']")),
     REVIEW_ORDER_TITLE(By.xpath("//h2[text()='Review Your Order']")),
     ORDER_MESSAGE(By.xpath("//div[@id='ordermsg']/textarea")),
@@ -23,9 +24,12 @@ public enum CartLocators {
     CONFIRM_ORDER_BUTTON(By.id("submit")),
     ORDER_PLACED_MESSAGE(By.xpath("//b[text()='Order Placed!']")),
     DELETE_PRODUCT_BUTTON(By.xpath("//tbody/tr//a[text()='%s']/../../../td[@class='cart_delete']/a")),
-    PRODUCTS_NAMES_IN_CART(By.xpath("//tr//td[@class='cart_description']//a[contains(text(), '%s')]")),
-    DELIVERY_DESTINATION_TITLE(By.xpath("//ul[@id='address_delivery']/li[contains(@class, 'firstname') " +
-            "and contains(@class, 'lastname')]")),
+    PRODUCTS_NAMES_IN_CART(
+            By.xpath("//tr//td[@class='cart_description']//a[contains(text(), '%s')]")),
+    DELIVERY_DESTINATION_TITLE(
+            By.xpath(
+                    "//ul[@id='address_delivery']/li[contains(@class, 'firstname') "
+                            + "and contains(@class, 'lastname')]")),
     DOWNLOAD_INVOICE_LINK(By.xpath("//a[text()='Download Invoice']")),
     ;
 

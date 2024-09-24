@@ -18,8 +18,11 @@ public enum HomeLocators {
     SUBSCRIBE_BUTTON(By.id("subscribe")),
     SUCCESS_SUBSCRIPTION_MESSAGE(By.id("success-subscribe")),
     RECOMMENDED_PRODUCTS_TITLE(By.xpath("//div[@class='recommended_items']/h2")),
-    RECOMMENDED_PRODUCT_ADD_TO_CART(By.xpath("//div[@id='recommended-item-carousel']//div[@class='item active']//a[text()='Add to cart']")),
-    RECOMMENDED_PRODUCTS_NAMES(By.xpath("//div[@id='recommended-item-carousel']//div[@class='item active']//p")),
+    RECOMMENDED_PRODUCT_ADD_TO_CART(
+            By.xpath(
+                    "//div[@id='recommended-item-carousel']//div[@class='item active']//a[text()='Add to cart']")),
+    RECOMMENDED_PRODUCTS_NAMES(
+            By.xpath("//div[@id='recommended-item-carousel']//div[@class='item active']//p")),
     ;
 
     private final By locator;
@@ -31,7 +34,4 @@ public enum HomeLocators {
     public By getLocator() {
         return locator;
     }
-
-
-
 }

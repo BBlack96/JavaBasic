@@ -3,7 +3,7 @@ package automation_exercise.utils;
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class EnvConfig {
-    private Dotenv dotenv;
+    private final Dotenv dotenv;
 
     public EnvConfig() {
         dotenv = Dotenv.load();
@@ -113,11 +113,9 @@ public class EnvConfig {
         return dotenv.get("SUBSCRIPTION_EMAIL");
     }
 
-
     public String getCardName() {
         return dotenv.get("CARD_NAME");
     }
-
 
     public String getCardNumber() {
         return dotenv.get("CARD_NUMBER");
@@ -139,6 +137,3 @@ public class EnvConfig {
         return dotenv.get("REVIEW_MESSAGE");
     }
 }
-
-
-

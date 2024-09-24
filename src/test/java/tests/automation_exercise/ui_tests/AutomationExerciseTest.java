@@ -2,7 +2,9 @@ package tests.automation_exercise.ui_tests;
 
 import automation_exercise.pages.BasePage;
 import automation_exercise.utils.EnvConfig;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -37,19 +39,28 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickSignupButton();
         signupPage
                 .checkSignupFormTitle()
-                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
-                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
-                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
-                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .fillRegisterForm(
+                        config.getNewUserMaleGender(),
+                        config.getNewUserName(),
+                        config.getNewUserPassword(),
+                        24,
+                        "May",
+                        "1990",
+                        config.getNewUserFirstName(),
+                        config.getNewUserLastName(),
+                        config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(),
+                        config.getNewUserAddress2(),
+                        config.getNewUserCountry(),
+                        config.getNewUserState(),
+                        config.getNewUserCity(),
+                        config.getNewUserZipCode(),
+                        config.getNewUserMobileNumber())
                 .selectNewsletterSubscription()
                 .selectSpecialOffersSubscription()
                 .clickCreateAccountButton();
-        accountCreatedPage
-                .verifyAccountCreatedTitle()
-                .clickContinueButton();
-        homePage
-                .checkLoggedUser(config.getNewUserName())
-                .clickLogoutButton();
+        accountCreatedPage.verifyAccountCreatedTitle().clickContinueButton();
+        homePage.checkLoggedUser(config.getNewUserName()).clickLogoutButton();
     }
 
     @Test(priority = 2)
@@ -85,9 +96,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .enterLoginEmail(config.getValidUserEmail())
                 .enterLoginPassword(config.getValidUserPassword())
                 .clickLoginButton();
-        homePage
-                .checkLoggedUser(config.getValidUserName())
-                .clickLogoutButton();
+        homePage.checkLoggedUser(config.getValidUserName()).clickLogoutButton();
         loginPage.checkCurrentPage();
     }
 
@@ -153,7 +162,8 @@ public class AutomationExerciseTest extends BaseTest {
 
     @Test(priority = 10)
     public void verifySubscriptionInHomePage() {
-        homePage.checkFooterSubscriptionTitle()
+        homePage
+                .checkFooterSubscriptionTitle()
                 .enterEmailForSubscription(config.getSubscriptionEmail())
                 .checkSubscriptionSuccessMessage();
     }
@@ -176,9 +186,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickContinueShoppingButton()
                 .addProductToCartByIndex(3)
                 .clickViewCartLink();
-        cartPage
-                .checkProductInCart("Blue Top")
-                .checkProductInCart("Men Tshirt");
+        cartPage.checkProductInCart("Blue Top").checkProductInCart("Men Tshirt");
     }
 
     @Test(priority = 13)
@@ -189,9 +197,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .setProductQuantity(4)
                 .addProductToCart()
                 .clickViewCartLink();
-        cartPage
-                .checkProductInCart("Blue Top")
-                .checkProductQuantityInCart("Blue Top", "5");
+        cartPage.checkProductInCart("Blue Top").checkProductQuantityInCart("Blue Top", "5");
     }
 
     @Test(priority = 14)
@@ -201,38 +207,47 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickContinueShoppingButton()
                 .addProductByName("Men Tshirt")
                 .clickViewCartLink();
-        cartPage
-                .clickProceedToCheckoutButton()
-                .clickRegisterLoginLink();
+        cartPage.clickProceedToCheckoutButton().clickRegisterLoginLink();
         loginPage
                 .enterNewUserEmail(config.getNewUserEmail())
                 .enterNewUserName(config.getNewUserName())
                 .clickSignupButton();
         signupPage
-                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
-                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
-                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
-                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .fillRegisterForm(
+                        config.getNewUserMaleGender(),
+                        config.getNewUserName(),
+                        config.getNewUserPassword(),
+                        24,
+                        "May",
+                        "1990",
+                        config.getNewUserFirstName(),
+                        config.getNewUserLastName(),
+                        config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(),
+                        config.getNewUserAddress2(),
+                        config.getNewUserCountry(),
+                        config.getNewUserState(),
+                        config.getNewUserCity(),
+                        config.getNewUserZipCode(),
+                        config.getNewUserMobileNumber())
                 .clickCreateAccountButton();
-        accountCreatedPage
-                .verifyAccountCreatedTitle()
-                .clickContinueButton();
-        homePage
-                .checkLoggedUser(config.getNewUserName())
-                .clickCartButton();
+        accountCreatedPage.verifyAccountCreatedTitle().clickContinueButton();
+        homePage.checkLoggedUser(config.getNewUserName()).clickCartButton();
         cartPage
                 .clickProceedToCheckoutButton()
                 .verifyAddressDetailsTitle()
                 .verifyReviewOrderTitle()
                 .setOrderMessage("Test Message")
                 .clickPlaceOrderButton()
-                .enterPaymentDetails(config.getCardName(), config.getCardNumber(), config.getCardCVC(),
-                        config.getCardExpiryMonth(), config.getCardExpiryYear())
+                .enterPaymentDetails(
+                        config.getCardName(),
+                        config.getCardNumber(),
+                        config.getCardCVC(),
+                        config.getCardExpiryMonth(),
+                        config.getCardExpiryYear())
                 .clickConfirmOrderButton()
                 .checkOrderPlacedMessage();
-        homePage
-                .clickDeleteAccountButton()
-                .checkAccountDeletedMessage();
+        homePage.clickDeleteAccountButton().checkAccountDeletedMessage();
     }
 
     @Test(priority = 15)
@@ -243,34 +258,42 @@ public class AutomationExerciseTest extends BaseTest {
                 .enterNewUserName(config.getNewUserName())
                 .clickSignupButton();
         signupPage
-                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
-                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
-                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
-                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .fillRegisterForm(
+                        config.getNewUserMaleGender(),
+                        config.getNewUserName(),
+                        config.getNewUserPassword(),
+                        24,
+                        "May",
+                        "1990",
+                        config.getNewUserFirstName(),
+                        config.getNewUserLastName(),
+                        config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(),
+                        config.getNewUserAddress2(),
+                        config.getNewUserCountry(),
+                        config.getNewUserState(),
+                        config.getNewUserCity(),
+                        config.getNewUserZipCode(),
+                        config.getNewUserMobileNumber())
                 .clickCreateAccountButton();
-        accountCreatedPage
-                .verifyAccountCreatedTitle()
-                .clickContinueButton();
-        homePage
-                .checkLoggedUser(config.getNewUserName());
-        productsPage
-                .addProductByName("Blue Top")
-                .addProductByName("Men Tshirt")
-                .clickViewCartLink();
+        accountCreatedPage.verifyAccountCreatedTitle().clickContinueButton();
+        homePage.checkLoggedUser(config.getNewUserName());
+        productsPage.addProductByName("Blue Top").addProductByName("Men Tshirt").clickViewCartLink();
         cartPage
                 .clickProceedToCheckoutButton()
                 .verifyAddressDetailsTitle()
                 .verifyReviewOrderTitle()
                 .setOrderMessage("Test Message")
                 .clickPlaceOrderButton()
-                .enterPaymentDetails(config.getCardName(), config.getCardNumber(), config.getCardCVC(),
-                        config.getCardExpiryMonth(), config.getCardExpiryYear())
+                .enterPaymentDetails(
+                        config.getCardName(),
+                        config.getCardNumber(),
+                        config.getCardCVC(),
+                        config.getCardExpiryMonth(),
+                        config.getCardExpiryYear())
                 .clickConfirmOrderButton()
                 .checkOrderPlacedMessage();
-        homePage
-                .clickDeleteAccountButton()
-                .checkAccountDeletedMessage();
-
+        homePage.clickDeleteAccountButton().checkAccountDeletedMessage();
     }
 
     @Test(priority = 16)
@@ -281,10 +304,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .enterLoginPassword(config.getValidUserPassword())
                 .clickLoginButton();
         homePage.checkLoggedUser(config.getValidUserName());
-        productsPage
-                .addProductByName("Blue Top")
-                .addProductByName("Men Tshirt")
-                .clickViewCartLink();
+        productsPage.addProductByName("Blue Top").addProductByName("Men Tshirt").clickViewCartLink();
         cartPage
                 .checkProductInCart("Blue Top")
                 .checkProductInCart("Men Tshirt")
@@ -293,8 +313,12 @@ public class AutomationExerciseTest extends BaseTest {
                 .verifyReviewOrderTitle()
                 .setOrderMessage("Test Message")
                 .clickPlaceOrderButton()
-                .enterPaymentDetails(config.getCardName(), config.getCardNumber(), config.getCardCVC(),
-                        config.getCardExpiryMonth(), config.getCardExpiryYear())
+                .enterPaymentDetails(
+                        config.getCardName(),
+                        config.getCardNumber(),
+                        config.getCardCVC(),
+                        config.getCardExpiryMonth(),
+                        config.getCardExpiryYear())
                 .clickConfirmOrderButton()
                 .checkOrderPlacedMessage();
     }
@@ -325,8 +349,7 @@ public class AutomationExerciseTest extends BaseTest {
                 .checkDressSubcategoryTitle()
                 .clickMenCategory()
                 .clickTshirtsMenSubcategory()
-                .checkMenTshirtsSubcategoryTitle()
-        ;
+                .checkMenTshirtsSubcategoryTitle();
     }
 
     @Test(priority = 19)
@@ -366,24 +389,23 @@ public class AutomationExerciseTest extends BaseTest {
         productsPage
                 .clickProductViewButtonByIndex(1)
                 .checkWriteYourReviewTitleOnProductPage()
-                .fillReviewForm(config.getValidUserName(), config.getValidUserEmail(), config.getReviewMessage())
+                .fillReviewForm(
+                        config.getValidUserName(), config.getValidUserEmail(), config.getReviewMessage())
                 .submitReview()
                 .checkReviewSuccessAlert();
     }
 
     @Test(priority = 22)
-    public void AddToCartFromRecommendedItems(){
+    public void AddToCartFromRecommendedItems() {
         homePage.checkRecommendedProductsTitle();
         List<String> recommendedItems = homePage.getRecommendedItemsText();
-        homePage
-                .addRecommendedProductsToCart()
-                .clickCartButton();
+        homePage.addRecommendedProductsToCart().clickCartButton();
         cartPage.checkProductsInCart(recommendedItems);
         homePage.clickLogoutButton();
     }
 
     @Test(priority = 23)
-    public void VerifyAddressDetailsInCheckoutPage(){
+    public void VerifyAddressDetailsInCheckoutPage() {
         homePage.clickLoginButton();
         loginPage
                 .checkSignupFormTitle()
@@ -392,16 +414,27 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickSignupButton();
         signupPage
                 .checkSignupFormTitle()
-                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
-                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
-                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
-                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .fillRegisterForm(
+                        config.getNewUserMaleGender(),
+                        config.getNewUserName(),
+                        config.getNewUserPassword(),
+                        24,
+                        "May",
+                        "1990",
+                        config.getNewUserFirstName(),
+                        config.getNewUserLastName(),
+                        config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(),
+                        config.getNewUserAddress2(),
+                        config.getNewUserCountry(),
+                        config.getNewUserState(),
+                        config.getNewUserCity(),
+                        config.getNewUserZipCode(),
+                        config.getNewUserMobileNumber())
                 .selectNewsletterSubscription()
                 .selectSpecialOffersSubscription()
                 .clickCreateAccountButton();
-        accountCreatedPage
-                .verifyAccountCreatedTitle()
-                .clickContinueButton();
+        accountCreatedPage.verifyAccountCreatedTitle().clickContinueButton();
         homePage
                 .checkLoggedUser(config.getNewUserName())
                 .addRecommendedProductsToCart()
@@ -410,13 +443,11 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickProceedToCheckoutButton()
                 .verifyDeliveryAddress(config.getNewUserMaleGender() + " " + config.getNewUserName())
                 .verifyBillingAddress(config.getNewUserMaleGender() + " " + config.getNewUserName());
-        homePage
-                .clickDeleteAccountButton()
-                .checkAccountDeletedMessage();
+        homePage.clickDeleteAccountButton().checkAccountDeletedMessage();
     }
 
     @Test(priority = 24)
-    public void DownloadInvoiceAfterPurchaseOrder(){
+    public void DownloadInvoiceAfterPurchaseOrder() {
         homePage.clickLoginButton();
         loginPage
                 .checkSignupFormTitle()
@@ -425,16 +456,27 @@ public class AutomationExerciseTest extends BaseTest {
                 .clickSignupButton();
         signupPage
                 .checkSignupFormTitle()
-                .fillRegisterForm(config.getNewUserMaleGender(), config.getNewUserName(), config.getNewUserPassword(), 24, "May", "1990",
-                        config.getNewUserFirstName(), config.getNewUserLastName(), config.getNewUserCompanyName(),
-                        config.getNewUserAddress1(), config.getNewUserAddress2(), config.getNewUserCountry(),
-                        config.getNewUserState(), config.getNewUserCity(), config.getNewUserZipCode(), config.getNewUserMobileNumber())
+                .fillRegisterForm(
+                        config.getNewUserMaleGender(),
+                        config.getNewUserName(),
+                        config.getNewUserPassword(),
+                        24,
+                        "May",
+                        "1990",
+                        config.getNewUserFirstName(),
+                        config.getNewUserLastName(),
+                        config.getNewUserCompanyName(),
+                        config.getNewUserAddress1(),
+                        config.getNewUserAddress2(),
+                        config.getNewUserCountry(),
+                        config.getNewUserState(),
+                        config.getNewUserCity(),
+                        config.getNewUserZipCode(),
+                        config.getNewUserMobileNumber())
                 .selectNewsletterSubscription()
                 .selectSpecialOffersSubscription()
                 .clickCreateAccountButton();
-        accountCreatedPage
-                .verifyAccountCreatedTitle()
-                .clickContinueButton();
+        accountCreatedPage.verifyAccountCreatedTitle().clickContinueButton();
         homePage
                 .checkLoggedUser(config.getNewUserName())
                 .addRecommendedProductsToCart()
@@ -442,14 +484,15 @@ public class AutomationExerciseTest extends BaseTest {
         cartPage
                 .clickProceedToCheckoutButton()
                 .clickPlaceOrderButton()
-                .enterPaymentDetails(config.getCardName(), config.getCardNumber(), config.getCardCVC(),
-                        config.getCardExpiryMonth(), config.getCardExpiryYear())
+                .enterPaymentDetails(
+                        config.getCardName(),
+                        config.getCardNumber(),
+                        config.getCardCVC(),
+                        config.getCardExpiryMonth(),
+                        config.getCardExpiryYear())
                 .clickConfirmOrderButton()
                 .checkOrderPlacedMessage()
                 .downloadAndCheckInvoice();
-        homePage
-                .clickDeleteAccountButton()
-                .checkAccountDeletedMessage();
-
+        homePage.clickDeleteAccountButton().checkAccountDeletedMessage();
     }
 }

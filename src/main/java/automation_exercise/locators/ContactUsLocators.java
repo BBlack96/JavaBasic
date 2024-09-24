@@ -11,8 +11,7 @@ public enum ContactUsLocators {
     UPLOAD_FILE_BUTTON(By.name("upload_file")),
     SUBMIT_BUTTON(By.name("submit")),
     ALERT_STATUS_MESSAGE(By.xpath("//div[contains(@class, 'status')]")),
-    HOME_BUTTON(By.xpath("//div[@id='form-section']/a"))
-    ;
+    HOME_BUTTON(By.xpath("//div[@id='form-section']/a"));
 
     private final By locator;
 

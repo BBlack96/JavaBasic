@@ -3,7 +3,7 @@ package automation_exercise.requests;
 import automation_exercise.endpoints.ApiEndpoints;
 import io.restassured.response.Response;
 
-public class BrandsList extends BaseRequest{
+public class BrandsList extends BaseRequest {
 
     public Response getBrandsList() {
         return sendGetRequest(ApiEndpoints.BRANDS_LIST.getEndpoint());
@@ -20,5 +20,4 @@ public class BrandsList extends BaseRequest{
     public Response deleteBrandsList() {
         return sendDeleteRequest(ApiEndpoints.BRANDS_LIST.getEndpoint());
     }
-
 }

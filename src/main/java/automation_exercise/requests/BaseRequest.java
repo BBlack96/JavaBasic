@@ -1,4 +1,5 @@
 package automation_exercise.requests;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
@@ -19,5 +20,4 @@ public class BaseRequest {
     public Response sendDeleteRequest(String endpoint) {
         return RestAssured.given().when().delete(endpoint);
     }
-
 }

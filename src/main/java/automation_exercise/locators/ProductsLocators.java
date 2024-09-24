@@ -32,7 +32,4 @@ public enum ProductsLocators {
         String xpath = String.format(locator.toString().replace("By.xpath: ", ""), productName);
         return By.xpath(xpath);
     }
-
-
 }
-

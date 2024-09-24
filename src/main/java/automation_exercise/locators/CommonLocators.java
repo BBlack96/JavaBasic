@@ -26,13 +26,15 @@ public enum CommonLocators {
     MAST_AND_HARBOR_BRAND(By.xpath("//a[@href='/brand_products/Mast & Harbour']")),
     BABY_HUG_BRAND(By.xpath("//a[@href='/brand_products/Babyhug']")),
     PRODUCT_LIST(By.xpath("//div[@class='features_items']")),
-    ALL_ADD_TO_CART(By.xpath("//div[contains(@class, 'productinfo')]//a[contains(@class, 'add-to-cart')]")),
+    ALL_ADD_TO_CART(
+            By.xpath("//div[contains(@class, 'productinfo')]//a[contains(@class, 'add-to-cart')]")),
     WRITE_YOUR_REVIEW_TITLE_ON_PRODUCT_PAGE(By.xpath("//a[text()='Write Your Review']")),
     REVIEW_NAME_INPUT(By.id("name")),
     REVIEW_EMAIL_INPUT(By.id("email")),
     REVIEW_MESSAGE_INPUT(By.id("review")),
     SUBMIT_REVIEW_BUTTON(By.id("button-review")),
-    SUCCESS_REVIEW_ALERT(By.xpath("//div[@id='review-section']//div[contains(@class, 'alert-success')]")),
+    SUCCESS_REVIEW_ALERT(
+            By.xpath("//div[@id='review-section']//div[contains(@class, 'alert-success')]")),
     ;
 
     private final By locator;

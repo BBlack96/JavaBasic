@@ -3,7 +3,7 @@ package automation_exercise.requests;
 import automation_exercise.endpoints.ApiEndpoints;
 import io.restassured.response.Response;
 
-public class VerifyLogin extends BaseRequest{
+public class VerifyLogin extends BaseRequest {
 
     public Response deleteAccount() {
         return sendDeleteRequest(ApiEndpoints.DELETE_ACCOUNT.getEndpoint());
